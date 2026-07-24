@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+  CIC-Global Design-Tokens.
+  Gold ist Akzent, nie Fläche. Ink ist bewusst nicht #000 (OLED-Smear).
+*/
+@theme {
+  --color-ink: #0a0a0c;
+  --color-surface: #131317;
+  --color-surface-2: #1b1b20;
+  --color-gold: #be9b53;
+  --color-gold-bright: #d8b76a;
+  --color-gold-soft: #6d5a31;
+  --color-paper: #f2efe8;
+  --color-paper-2: #e6e1d6;
+  --color-fg: #edeae3;
+  --color-fg-muted: #9c978c;
+  --color-ink-fg: #17161a;
+  --color-ink-fg-muted: #58544c;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+
+  /* Feste Type-Scale — keine Einzelfall-Größen wie auf der Alt-Seite */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 4rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Lässt Checkboxen, Textfelder und Scrollbalken nativ dunkel rendern
+       statt als weiße Kästen auf dunklem Grund. */
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    /* Sicherheitsnetz für lange Komposita ("maßgeschneidert",
+       "Berufsunfähigkeitsversicherung") auf schmalen Displays. Greift nur,
+       wenn ein Wort sonst über den Rand liefe. */
+    overflow-wrap: break-word;
+  }
+
+  /* Zahlen und Zeitangaben laufen tabellarisch, damit nichts springt */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    /*
+      Harte Absicherung für die Zeitachse: useReducedMotion() liefert beim
+      ersten Render noch false, und `initial` wird nur einmal ausgewertet —
+      die Punkte blieben sonst auf scale 0 stehen. Diese Regel gilt
+      unabhängig davon, was JavaScript entscheidet.
+    */
+    [data-axis] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Eyebrow: Mono, weit gesperrt — markiert Sektionen ohne eine Überschrift zu verbrauchen */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .prose-cic p {
+    margin-bottom: 1.25rem;
+    max-width: 68ch;
+  }
+  .prose-cic p:last-child {
+    margin-bottom: 0;
+  }
+}
