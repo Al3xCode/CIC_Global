@@ -31,7 +31,7 @@ export default function UeberUns() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:items-start lg:gap-16 lg:py-24">
           <div className="relative aspect-[4/3] w-full lg:sticky lg:top-24">
             <Image
-              src="/img/design-ohne-titel-8.png"
+              src="/img/portrait-buero.webp"
               alt={`${site.founder} bei der Arbeit im Büro in ${site.city}`}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
