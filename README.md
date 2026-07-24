@@ -3,11 +3,23 @@
 Neubau der Website von CIC-Global (Konstantinos Kougas, Gelsenkirchen) als Ersatz
 für die bestehende Hostinger-Builder-Seite.
 
+**Live:** https://cic-global.vercel.app
+
 ```bash
 npm install
 npm run dev      # http://localhost:3000
 npm run build
 ```
+
+## Deployment
+
+- Live-URL: https://cic-global.vercel.app
+- Repo: https://github.com/Al3xCode/CIC_Global
+- Deploy: `git push` auf `main` → Vercel baut automatisch
+- Vercel-Projekt: `al3x-workspace/cic-global`
+
+Die Domain `cic-global.de` zeigt weiterhin auf die alte Hostinger-Seite und wird
+erst umgehängt, wenn Impressum und Datenschutz stehen.
 
 ## Stack
 
