@@ -48,6 +48,19 @@ Dark + Gold, aufbauend auf der bestehenden Markenfarbe `#BE9B53`.
   von selbst. `prefers-reduced-motion` wird respektiert — bei der Achse abgesichert
   per CSS in `globals.css`, nicht nur über JavaScript.
 
+## Bilder
+
+Quellbilder liegen als WebP in `public/img`, skaliert auf die tatsächlich
+gebrauchte Auflösung. Neue Bilder durchlaufen lassen mit:
+
+```bash
+node scripts/optimize-images.mjs
+```
+
+`next/image` rechnet zur Laufzeit weiter herunter und liefert je nach Gerät
+28–54 KB aus. Große Quell-PNGs schaden der Auslieferung nicht, machen aber
+Build und Erst-Optimierung langsam — deshalb gehören sie nicht ins Repo.
+
 ## Mobile
 
 Geprüft bei 320 / 375 / 414 px, im Querformat (812×375) und auf dem Tablet (768 px),
