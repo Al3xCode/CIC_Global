@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -39,6 +39,11 @@ export const metadata: Metadata = {
     locale: "de_DE",
     siteName: site.name,
   },
+};
+
+/** Dunkler Grund fürs Farbschema — hält die mobile Browser-Chrome konsistent. */
+export const viewport: Viewport = {
+  themeColor: "#0a0a0c",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

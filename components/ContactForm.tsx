@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Entwurfsstand: der Versand ist noch nicht angebunden, das Formular zeigt
@@ -13,6 +13,19 @@ import { useState } from "react";
  */
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const dirty = useRef(false);
+
+  // Warnt vor dem Verlassen der Seite, sobald etwas eingetippt wurde und
+  // die Nachricht noch nicht abgeschickt ist — sonst geht ein ausgefülltes
+  // Formular bei einem versehentlichen Klick auf einen Nav-Link verloren.
+  useEffect(() => {
+    function onBeforeUnload(e: BeforeUnloadEvent) {
+      if (!dirty.current || sent) return;
+      e.preventDefault();
+    }
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [sent]);
 
   if (sent) {
     return (
@@ -36,7 +49,11 @@ export function ContactForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        dirty.current = false;
         setSent(true);
+      }}
+      onChange={() => {
+        dirty.current = true;
       }}
       className="flex flex-col gap-6"
     >
@@ -55,8 +72,22 @@ export function ContactForm() {
       </div>
 
       <Field id="name" label="Vor- und Nachname" required autoComplete="name" />
-      <Field id="telefon" label="Telefonnummer" required type="tel" autoComplete="tel" />
-      <Field id="email" label="E-Mail" required type="email" autoComplete="email" />
+      <Field
+        id="telefon"
+        label="Telefonnummer"
+        required
+        type="tel"
+        autoComplete="tel"
+        inputMode="tel"
+      />
+      <Field
+        id="email"
+        label="E-Mail"
+        required
+        type="email"
+        autoComplete="email"
+        spellCheck={false}
+      />
       <Field id="firma" label="Firmenname" hint="Optional" autoComplete="organization" />
 
       <div>
@@ -111,6 +142,8 @@ function Field({
   required,
   type = "text",
   autoComplete,
+  inputMode,
+  spellCheck,
 }: {
   id: string;
   label: string;
@@ -118,6 +151,8 @@ function Field({
   required?: boolean;
   type?: string;
   autoComplete?: string;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  spellCheck?: boolean;
 }) {
   return (
     <div>
@@ -132,6 +167,8 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
+        inputMode={inputMode}
+        spellCheck={spellCheck}
         className="field mt-2 h-12 w-full border border-white/15 bg-surface px-4 text-base text-fg outline-none"
       />
     </div>

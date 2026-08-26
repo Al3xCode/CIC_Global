@@ -37,6 +37,7 @@ export function NewsletterForm() {
           type="email"
           required
           autoComplete="email"
+          spellCheck={false}
           className="field mt-2 h-12 w-full max-w-md border border-white/15 bg-surface px-4 text-base text-fg outline-none"
         />
       </div>

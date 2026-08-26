@@ -102,17 +102,23 @@ export function CalendlyEmbed() {
   return (
     <>
       <div
+        role="status"
+        aria-live="polite"
         className="relative mx-auto max-w-3xl overflow-hidden bg-paper p-2 sm:p-3"
         style={{ height: ready ? height + 16 : FALLBACK_HEIGHT }}
       >
         {!ready && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <span className="h-6 w-6 animate-spin rounded-full border-2 border-ink-fg-muted/25 border-t-gold" />
+            <span
+              aria-hidden
+              className="h-6 w-6 animate-spin rounded-full border-2 border-ink-fg-muted/25 border-t-gold"
+            />
             <p className="font-mono text-2xs uppercase tracking-[0.14em] text-ink-fg-muted">
               Kalender wird geladen …
             </p>
           </div>
         )}
+        {ready && <span className="sr-only">Kalender ist geladen.</span>}
         <div
           className="calendly-inline-widget"
           data-url={CALENDLY_URL}
