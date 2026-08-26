@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "./site";
+import { site, type Faq } from "./site";
 
 export function pageMeta({
   title,
@@ -57,3 +57,18 @@ export const localBusinessJsonLd = {
   ],
   areaServed: "DE",
 };
+
+export function faqJsonLd(items: Faq[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+}

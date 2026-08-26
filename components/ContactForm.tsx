@@ -16,7 +16,7 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div role="status" className="border border-gold/40 bg-surface p-8">
+      <div role="status" className="animate-rise-in border border-gold/40 bg-surface p-8">
         <p className="font-display text-lg text-gold">Danke, Ihre Nachricht ist da.</p>
         <p className="mt-3 text-sm text-fg-muted">
           Wir melden uns innerhalb eines Werktags. Wenn es eilig ist, rufen Sie uns gern direkt an.
@@ -68,7 +68,7 @@ export function ContactForm() {
           name="nachricht"
           required
           rows={5}
-          className="mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-base text-fg outline-none transition-colors placeholder:text-fg-muted/60 focus:border-gold"
+          className="field mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-base text-fg outline-none placeholder:text-fg-muted/60"
         />
       </div>
 
@@ -92,7 +92,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="min-h-12 self-start bg-gold px-7 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+        className="btn-primary min-h-12 self-start px-7 text-sm font-medium"
       >
         Nachricht senden
       </button>
@@ -132,7 +132,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="mt-2 h-12 w-full border border-white/15 bg-surface px-4 text-base text-fg outline-none transition-colors focus:border-gold"
+        className="field mt-2 h-12 w-full border border-white/15 bg-surface px-4 text-base text-fg outline-none"
       />
     </div>
   );

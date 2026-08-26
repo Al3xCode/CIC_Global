@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </p>
           <Link
             href="/kontakt"
-            className="mt-7 inline-flex min-h-12 items-center bg-gold px-6 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+            className="btn-primary mt-7 inline-flex min-h-12 items-center px-6 text-sm font-medium"
           >
             Erstgespräch vereinbaren
           </Link>

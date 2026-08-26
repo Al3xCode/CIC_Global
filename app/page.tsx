@@ -2,8 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Counter } from "@/components/Counter";
+import { FAQ } from "@/components/FAQ";
+import { HeroLines } from "@/components/HeroLines";
 import { Timeline } from "@/components/Timeline";
-import { articles, formatDate, partners, services, site } from "@/lib/site";
+import { faqJsonLd } from "@/lib/seo";
+import { articles, faqs, formatDate, partners, services, site } from "@/lib/site";
 
 export default function Home() {
   const latest = articles.slice(0, 3);
@@ -11,23 +14,37 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="border-b border-white/8">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.25fr_1fr] lg:gap-14 lg:py-24">
+      <section className="relative overflow-hidden border-b border-white/8 lg:min-h-[115vh]">
+        {/* Sehr leiser Gold-Schein — keine Fläche, nur Tiefe hinter dem Text */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60rem 30rem at 8% 0%, rgba(190,155,83,0.14), transparent 60%)",
+          }}
+        />
+        <HeroLines />
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.25fr_1fr] lg:gap-14 lg:py-28">
           <div>
-            <p className="eyebrow">Finanzberatung · {site.city}</p>
-            {/* 3.5rem statt 4rem: so bleibt "Finanzielle Sicherheit" auf einer Zeile */}
-            <h1 className="mt-5 text-[2rem] sm:text-2xl lg:text-[3.5rem]">
-              Finanzielle Sicherheit beginnt mit der richtigen&nbsp;Beratung.
+            <p className="eyebrow flex items-center gap-2">
+              <span aria-hidden className="h-px w-6 bg-gold" />
+              Finanzberatung · {site.city}
+            </p>
+            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[4rem]">
+              Finanzielle&nbsp;Sicherheit beginnt mit der{" "}
+              <em className="text-gold not-italic">richtigen</em>&nbsp;Beratung.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-fg-muted">
+            <p className="mt-7 max-w-xl text-lg text-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
               Plan, der heute wirkt und in dreißig Jahren noch trägt.
             </p>
 
-            <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
               <Link
                 href="/kontakt"
-                className="inline-flex min-h-12 items-center bg-gold px-6 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+                className="btn-primary inline-flex min-h-14 items-center px-8 text-base font-medium"
               >
                 Kostenloses Erstgespräch
               </Link>
@@ -47,15 +64,23 @@ export default function Home() {
           </div>
 
           <figure className="m-0">
-            <div className="relative aspect-[3/4] w-full">
-              <Image
-                src="/img/portrait-hero.webp"
-                alt={`${site.founder}, Gründer von ${site.name}`}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-top"
+            <div className="relative">
+              {/* Versetzter Gold-Rahmen hinter dem Portrait — gibt dem Bild Gewicht,
+                  ohne eine Fläche zu füllen. */}
+              <div
+                aria-hidden
+                className="absolute -bottom-4 -right-4 hidden aspect-[3/4] w-full border border-gold/50 sm:block"
               />
+              <div className="relative aspect-[3/4] w-full">
+                <Image
+                  src="/img/portrait-hero.webp"
+                  alt={`${site.founder}, Gründer von ${site.name}`}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
             <figcaption className="mt-4 font-mono text-2xs uppercase tracking-[0.18em] text-fg-muted">
               {site.founder}
@@ -187,7 +212,7 @@ export default function Home() {
               <li key={a.slug} className="border-b border-white/8">
                 <Link
                   href={`/blog/${a.slug}`}
-                  className="group grid gap-1 py-6 sm:grid-cols-[9rem_1fr] sm:gap-6"
+                  className="group relative grid gap-1 py-6 pr-0 transition-colors sm:grid-cols-[9rem_1fr] sm:gap-6 sm:pr-8 sm:hover:bg-white/[0.03]"
                 >
                   <time
                     dateTime={a.date}
@@ -201,11 +226,37 @@ export default function Home() {
                     </span>
                     <span className="mt-1 block text-sm text-fg-muted">{a.lead}</span>
                   </span>
+                  <ArrowRight
+                    aria-hidden
+                    size={16}
+                    strokeWidth={1.5}
+                    className="absolute right-2 top-1/2 hidden -translate-y-1/2 translate-x-2 text-gold opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 sm:block"
+                  />
                 </Link>
               </li>
             ))}
           </ul>
         </div>
+      </section>
+
+      {/* ---------- Häufige Fragen ---------- */}
+      <section className="border-b border-white/8">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Häufige Fragen</p>
+            <h2 className="mt-5 text-xl lg:text-2xl">Bevor Sie schreiben.</h2>
+            <p className="mt-5 text-fg-muted">
+              Was uns am häufigsten gefragt wird — kurz beantwortet, ohne Umwege.
+            </p>
+          </div>
+
+          <FAQ items={faqs} />
+        </div>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
+        />
       </section>
 
       {/* ---------- Abschluss-CTA ---------- */}
@@ -221,7 +272,7 @@ export default function Home() {
             </p>
             <Link
               href="/kontakt"
-              className="mt-9 inline-flex min-h-12 items-center bg-gold px-6 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+              className="btn-primary mt-9 inline-flex min-h-12 items-center px-6 text-sm font-medium"
             >
               Termin vereinbaren
             </Link>

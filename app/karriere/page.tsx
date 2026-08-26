@@ -57,7 +57,7 @@ export default function Karriere() {
             </p>
             <a
               href={`mailto:${site.email}?subject=Initiativbewerbung`}
-              className="mt-8 inline-flex min-h-12 items-center bg-gold px-6 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+              className="btn-primary mt-8 inline-flex min-h-12 items-center px-6 text-sm font-medium"
             >
               Initiativ bewerben
             </a>

@@ -41,7 +41,10 @@ export function LegalStub({
             ))}
           </ul>
           <p className="mt-8 font-mono text-xs text-fg-muted">
-            Rückfragen an {site.email}
+            Rückfragen an{" "}
+            <a href={`mailto:${site.email}`} className="text-gold transition-colors hover:text-gold-bright">
+              {site.email}
+            </a>
           </p>
         </div>
       </div>

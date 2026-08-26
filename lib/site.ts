@@ -79,6 +79,47 @@ export const partners = [
   "Vattenfall",
 ];
 
+/**
+ * Häufige Fragen. Antworten fassen nur zusammen, was an anderer Stelle auf
+ * der Seite bereits belastbar steht (kostenlos & unverbindlich, Netzwerk,
+ * Zielgruppen, Zeithorizonte) — keine neuen Zusagen zu Zulassung, Haftung
+ * oder Ablauf, die eine rechtliche Prüfung bräuchten.
+ */
+export type Faq = { question: string; answer: string };
+
+export const faqs: Faq[] = [
+  {
+    question: "Kostet das Erstgespräch etwas?",
+    answer:
+      "Nein. Das Erstgespräch ist kostenlos und unverbindlich. Sie erfahren, wo Sie stehen — ohne dass daraus eine Verpflichtung entsteht.",
+  },
+  {
+    question: "Muss ich mich auf das Gespräch vorbereiten?",
+    answer:
+      "Nicht zwingend. Hilfreich sind bestehende Verträge und ein grober Überblick über Einnahmen und Ausgaben — den Rest ordnen wir gemeinsam in der Finanzanalyse.",
+  },
+  {
+    question: "Bin ich danach zu etwas verpflichtet?",
+    answer:
+      "Nein. Sie entscheiden in Ruhe, ob und wie es weitergeht. Unser Ziel ist nicht, Produkte zu vermitteln, sondern eine Verbesserung, die sich für Sie rechnet.",
+  },
+  {
+    question: "Arbeiten Sie nur mit Privatpersonen?",
+    answer:
+      "Nein. Wir beraten Privatpersonen ebenso wie Unternehmer — bei Unternehmen liegt die durchschnittliche Ersparnis bei rund 10.500 € im Jahr, bei gleichzeitig besserem Versicherungsschutz.",
+  },
+  {
+    question: "Mit welchen Partnern arbeiten Sie zusammen?",
+    answer:
+      "Mit einem sorgfältig ausgewählten Netzwerk, darunter Barmenia Gothaer, ROLAND Rechtsschutz und Vattenfall. Das verschafft Ihnen Zugang zu einer breiten Auswahl statt zu einem einzelnen Anbieter.",
+  },
+  {
+    question: "Ist das eine einmalige Beratung oder eine langfristige Begleitung?",
+    answer:
+      "Beides, je nach Bereich. Manches wirkt sofort — etwa ein Tarifwechsel bei Strom und Gas. Anderes, wie die Altersvorsorge, begleiten wir über Jahrzehnte.",
+  },
+];
+
 export type Article = {
   slug: string;
   title: string;

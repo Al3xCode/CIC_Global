@@ -93,7 +93,7 @@ export default function UeberUns() {
             </p>
             <Link
               href="/kontakt"
-              className="mt-9 inline-flex min-h-12 items-center bg-gold px-6 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+              className="btn-primary mt-9 inline-flex min-h-12 items-center px-6 text-sm font-medium"
             >
               Termin vereinbaren
             </Link>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { nav } from "@/lib/site";
@@ -10,6 +11,7 @@ import { nav } from "@/lib/site";
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const reduce = useReducedMotion();
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -26,7 +28,7 @@ export function Header() {
         <Link
           href="/"
           aria-label="CIC-Global, zur Startseite"
-          className="-ml-1 flex min-h-11 items-center px-1"
+          className="-ml-1 flex min-h-11 items-center px-1 transition-opacity hover:opacity-80"
         >
           <Logo />
         </Link>
@@ -39,8 +41,8 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`flex min-h-11 items-center text-sm transition-colors hover:text-fg ${
-                  active ? "text-gold" : "text-fg-muted"
+                className={`relative flex min-h-11 items-center text-sm transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 after:ease-out hover:text-fg hover:after:scale-x-100 ${
+                  active ? "text-gold after:scale-x-100" : "text-fg-muted"
                 }`}
               >
                 {item.label}
@@ -49,7 +51,7 @@ export function Header() {
           })}
           <Link
             href="/kontakt"
-            className="flex min-h-11 items-center border border-gold px-4 text-sm text-gold transition-colors hover:bg-gold hover:text-ink"
+            className="btn-secondary flex min-h-11 items-center px-4 text-sm"
           >
             Erstgespräch
           </Link>
@@ -63,31 +65,57 @@ export function Header() {
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
           className="-mr-2 flex h-11 w-11 items-center justify-center text-fg md:hidden"
         >
-          {open ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
+          <span className="relative flex h-6 w-6 items-center justify-center">
+            <Menu
+              size={22}
+              strokeWidth={1.5}
+              aria-hidden
+              className={`absolute transition-all duration-200 ${
+                open ? "rotate-45 opacity-0" : "rotate-0 opacity-100"
+              }`}
+            />
+            <X
+              size={22}
+              strokeWidth={1.5}
+              aria-hidden
+              className={`absolute transition-all duration-200 ${
+                open ? "rotate-0 opacity-100" : "-rotate-45 opacity-0"
+              }`}
+            />
+          </span>
         </button>
       </div>
 
-      {open && (
-        <div id="mobile-nav" className="border-t border-white/8 bg-ink md:hidden">
-          <nav aria-label="Hauptnavigation mobil" className="mx-auto max-w-6xl px-5 py-4">
-            {nav.map((item) => (
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id="mobile-nav"
+            initial={reduce ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden border-t border-white/8 bg-ink md:hidden"
+          >
+            <nav aria-label="Hauptnavigation mobil" className="mx-auto max-w-6xl px-5 py-4">
+              {nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex min-h-12 items-center border-b border-white/6 text-base text-fg transition-colors last:border-0 hover:text-gold"
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.href}
-                href={item.href}
-                className="flex min-h-12 items-center border-b border-white/6 text-base text-fg last:border-0"
+                href="/kontakt"
+                className="btn-secondary mt-4 flex min-h-12 items-center justify-center text-base"
               >
-                {item.label}
+                Erstgespräch vereinbaren
               </Link>
-            ))}
-            <Link
-              href="/kontakt"
-              className="mt-4 flex min-h-12 items-center justify-center border border-gold text-base text-gold"
-            >
-              Erstgespräch vereinbaren
-            </Link>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

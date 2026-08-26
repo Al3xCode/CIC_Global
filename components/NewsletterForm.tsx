@@ -9,7 +9,10 @@ export function NewsletterForm() {
 
   if (sent) {
     return (
-      <p role="status" className="border border-gold/40 bg-surface px-6 py-5 text-sm text-gold">
+      <p
+        role="status"
+        className="animate-rise-in border border-gold/40 bg-surface px-6 py-5 text-sm text-gold"
+      >
         Fast geschafft — bestätigen Sie bitte noch den Link in der E-Mail, die wir Ihnen gerade
         geschickt haben.
       </p>
@@ -34,7 +37,7 @@ export function NewsletterForm() {
           type="email"
           required
           autoComplete="email"
-          className="mt-2 h-12 w-full max-w-md border border-white/15 bg-surface px-4 text-base text-fg outline-none transition-colors focus:border-gold"
+          className="field mt-2 h-12 w-full max-w-md border border-white/15 bg-surface px-4 text-base text-fg outline-none"
         />
       </div>
 
@@ -56,7 +59,7 @@ export function NewsletterForm() {
 
       <button
         type="submit"
-        className="min-h-12 self-start bg-gold px-7 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+        className="btn-primary min-h-12 self-start px-7 text-sm font-medium"
       >
         Newsletter abonnieren
       </button>
