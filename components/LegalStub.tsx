@@ -22,25 +22,25 @@ export function LegalStub({
       <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
         <p className="eyebrow">Rechtliches</p>
         <h1 className="mt-5 text-[2rem] sm:text-2xl lg:text-3xl">{title}</h1>
-        <p className="mt-6 text-lg text-fg-muted">{intro}</p>
+        <p className="mt-6 text-lg text-ink-fg-muted">{intro}</p>
 
-        <div className="mt-12 border border-gold/30 bg-surface p-8">
+        <div className="mt-12 border border-gold/30 bg-sand-2 p-8">
           <p className="font-mono text-2xs uppercase tracking-[0.18em] text-gold">
             Entwurfsstand — Inhalt folgt
           </p>
-          <p className="mt-4 text-sm text-fg-muted">
+          <p className="mt-4 text-sm text-ink-fg-muted">
             Diese Seite ist im Entwurf noch nicht ausformuliert. Vor dem Livegang werden hier
             folgende Angaben benötigt:
           </p>
           <ul className="mt-6 flex flex-col gap-2">
             {missing.map((m) => (
-              <li key={m} className="flex gap-3 text-sm text-fg-muted">
+              <li key={m} className="flex gap-3 text-sm text-ink-fg-muted">
                 <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-gold-soft" />
                 {m}
               </li>
             ))}
           </ul>
-          <p className="mt-8 font-mono text-xs text-fg-muted">
+          <p className="mt-8 font-mono text-xs text-ink-fg-muted">
             Rückfragen an{" "}
             <a href={`mailto:${site.email}`} className="text-gold transition-colors hover:text-gold-bright">
               {site.email}

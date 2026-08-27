@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-24">
         <Link
           href="/blog"
-          className="group inline-flex min-h-11 items-center gap-2 text-sm text-fg-muted transition-colors hover:text-gold"
+          className="group inline-flex min-h-11 items-center gap-2 text-sm text-ink-fg-muted transition-colors hover:text-gold"
         >
           <ArrowLeft
             size={15}
@@ -60,7 +60,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           Alle Beiträge
         </Link>
 
-        <div className="mt-8 flex gap-4 font-mono text-2xs uppercase tracking-[0.14em] text-fg-muted">
+        <div className="mt-8 flex gap-4 font-mono text-2xs uppercase tracking-[0.14em] text-ink-fg-muted">
           <time dateTime={article.date} className="tnum">
             {formatDate(article.date)}
           </time>
@@ -68,16 +68,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </div>
 
         <h1 className="mt-5 text-[2rem] sm:text-2xl lg:text-3xl">{article.title}</h1>
-        <p className="mt-6 text-lg text-fg-muted">{article.lead}</p>
+        <p className="mt-6 text-lg text-ink-fg-muted">{article.lead}</p>
 
-        <hr className="mt-12 border-white/10" />
+        <hr className="mt-12 border-ink/10" />
 
-        <div className="prose-cic mt-12 text-fg-muted">
+        <div className="prose-cic mt-12 text-ink-fg-muted">
           {article.paragraphs?.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
 
           {article.sections?.map((s) => (
             <section key={s.heading} className="mb-12 last:mb-0">
-              <h2 className="mb-5 text-xl text-fg">{s.heading}</h2>
+              <h2 className="mb-5 text-xl text-ink-fg">{s.heading}</h2>
               {s.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
@@ -85,9 +85,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           ))}
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-10">
+        <div className="mt-16 border-t border-ink/10 pt-10">
           <p className="text-lg">Klingt nach Ihrer Situation?</p>
-          <p className="mt-3 text-sm text-fg-muted">
+          <p className="mt-3 text-sm text-ink-fg-muted">
             Im kostenlosen Erstgespräch schauen wir uns an, wo Sie stehen.
           </p>
           <Link

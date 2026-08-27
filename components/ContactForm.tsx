@@ -29,15 +29,15 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div role="status" className="animate-rise-in border border-gold/40 bg-surface p-8">
+      <div role="status" className="animate-rise-in border border-gold/40 bg-sand-2 p-8">
         <p className="font-display text-lg text-gold">Danke, Ihre Nachricht ist da.</p>
-        <p className="mt-3 text-sm text-fg-muted">
+        <p className="mt-3 text-sm text-ink-fg-muted">
           Wir melden uns innerhalb eines Werktags. Wenn es eilig ist, rufen Sie uns gern direkt an.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 min-h-11 text-sm text-fg-muted underline underline-offset-4 transition-colors hover:text-gold"
+          className="mt-6 min-h-11 text-sm text-ink-fg-muted underline underline-offset-4 transition-colors hover:text-gold"
         >
           Weitere Nachricht schreiben
         </button>
@@ -91,7 +91,7 @@ export function ContactForm() {
       <Field id="firma" label="Firmenname" hint="Optional" autoComplete="organization" />
 
       <div>
-        <label htmlFor="nachricht" className="block text-sm text-fg">
+        <label htmlFor="nachricht" className="block text-sm text-ink-fg">
           Ihre Nachricht <span className="text-gold">*</span>
         </label>
         <textarea
@@ -99,7 +99,7 @@ export function ContactForm() {
           name="nachricht"
           required
           rows={5}
-          className="field mt-2 w-full border border-white/15 bg-surface px-4 py-3 text-base text-fg outline-none placeholder:text-fg-muted/60"
+          className="field mt-2 w-full border border-ink/15 bg-sand-2 px-4 py-3 text-base text-ink-fg outline-none placeholder:text-ink-fg-muted/60"
         />
       </div>
 
@@ -111,7 +111,7 @@ export function ContactForm() {
           required
           className="mt-0.5 h-6 w-6 shrink-0 accent-[#be9b53]"
         />
-        <label htmlFor="einwilligung" className="py-1.5 text-sm text-fg-muted">
+        <label htmlFor="einwilligung" className="py-1.5 text-sm text-ink-fg-muted">
           Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage
           gespeichert werden. Details in der{" "}
           <Link href="/datenschutz" className="text-gold underline underline-offset-4">
@@ -128,7 +128,7 @@ export function ContactForm() {
         Nachricht senden
       </button>
 
-      <p className="text-xs text-fg-muted">
+      <p className="text-xs text-ink-fg-muted">
         <span className="text-gold">*</span> Pflichtfeld
       </p>
     </form>
@@ -156,10 +156,10 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="flex items-baseline gap-2 text-sm text-fg">
+      <label htmlFor={id} className="flex items-baseline gap-2 text-sm text-ink-fg">
         {label}
         {required && <span className="text-gold">*</span>}
-        {hint && <span className="text-xs text-fg-muted">{hint}</span>}
+        {hint && <span className="text-xs text-ink-fg-muted">{hint}</span>}
       </label>
       <input
         id={id}
@@ -169,7 +169,7 @@ function Field({
         autoComplete={autoComplete}
         inputMode={inputMode}
         spellCheck={spellCheck}
-        className="field mt-2 h-12 w-full border border-white/15 bg-surface px-4 text-base text-fg outline-none"
+        className="field mt-2 h-12 w-full border border-ink/15 bg-sand-2 px-4 text-base text-ink-fg outline-none"
       />
     </div>
   );

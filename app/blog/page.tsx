@@ -18,19 +18,19 @@ export default function Blog() {
         <h1 className="mt-5 max-w-3xl text-[2rem] sm:text-2xl lg:text-3xl">
           Finanzen verstehen. Vermögen aufbauen. Zukunft sichern.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-fg-muted">
+        <p className="mt-6 max-w-2xl text-lg text-ink-fg-muted">
           Ihre Lebenssituation verändert sich — und damit auch Ihre finanziellen Ziele. Genau hier
           setzen wir an.
         </p>
 
-        <ul className="mt-14 border-t border-white/8">
+        <ul className="mt-14 border-t border-ink/8">
           {articles.map((a) => (
-            <li key={a.slug} className="border-b border-white/8">
+            <li key={a.slug} className="border-b border-ink/8">
               <Link
                 href={`/blog/${a.slug}`}
-                className="group relative grid gap-2 py-8 transition-colors sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pr-8 sm:hover:bg-white/[0.03]"
+                className="group relative grid gap-2 py-8 transition-colors sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pr-8 sm:hover:bg-ink/[0.03]"
               >
-                <div className="flex flex-col gap-1 font-mono text-2xs uppercase tracking-[0.14em] text-fg-muted sm:pt-2">
+                <div className="flex flex-col gap-1 font-mono text-2xs uppercase tracking-[0.14em] text-ink-fg-muted sm:pt-2">
                   <time dateTime={a.date} className="tnum">
                     {formatDate(a.date)}
                   </time>
@@ -40,7 +40,7 @@ export default function Blog() {
                   <h2 className="text-lg transition-colors group-hover:text-gold lg:text-xl">
                     {a.title}
                   </h2>
-                  <p className="mt-2 max-w-2xl text-sm text-fg-muted">{a.lead}</p>
+                  <p className="mt-2 max-w-2xl text-sm text-ink-fg-muted">{a.lead}</p>
                 </div>
                 <ArrowRight
                   aria-hidden

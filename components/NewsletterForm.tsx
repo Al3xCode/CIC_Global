@@ -11,7 +11,7 @@ export function NewsletterForm() {
     return (
       <p
         role="status"
-        className="animate-rise-in border border-gold/40 bg-surface px-6 py-5 text-sm text-gold"
+        className="animate-rise-in border border-gold/40 bg-sand-2 px-6 py-5 text-sm text-gold"
       >
         Fast geschafft — bestätigen Sie bitte noch den Link in der E-Mail, die wir Ihnen gerade
         geschickt haben.
@@ -28,7 +28,7 @@ export function NewsletterForm() {
       className="flex flex-col gap-5"
     >
       <div>
-        <label htmlFor="newsletter-email" className="block text-sm text-fg">
+        <label htmlFor="newsletter-email" className="block text-sm text-ink-fg">
           E-Mail-Adresse <span className="text-gold">*</span>
         </label>
         <input
@@ -38,7 +38,7 @@ export function NewsletterForm() {
           required
           autoComplete="email"
           spellCheck={false}
-          className="field mt-2 h-12 w-full max-w-md border border-white/15 bg-surface px-4 text-base text-fg outline-none"
+          className="field mt-2 h-12 w-full max-w-md border border-ink/15 bg-sand-2 px-4 text-base text-ink-fg outline-none"
         />
       </div>
 
@@ -49,7 +49,7 @@ export function NewsletterForm() {
           required
           className="mt-0.5 h-6 w-6 shrink-0 accent-[#be9b53]"
         />
-        <label htmlFor="newsletter-einwilligung" className="py-1.5 text-sm text-fg-muted">
+        <label htmlFor="newsletter-einwilligung" className="py-1.5 text-sm text-ink-fg-muted">
           Ich möchte den Newsletter erhalten und kann mich jederzeit wieder abmelden. Details in der{" "}
           <Link href="/datenschutz" className="text-gold underline underline-offset-4">
             Datenschutzerklärung

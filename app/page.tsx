@@ -14,14 +14,14 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden border-b border-white/8 lg:min-h-[115vh]">
-        {/* Sehr leiser Gold-Schein — keine Fläche, nur Tiefe hinter dem Text */}
+      <section className="relative overflow-hidden border-b border-ink/8 lg:min-h-[115vh]">
+        {/* Sehr leise Vignette — keine Fläche, nur Tiefe hinter dem Text */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(60rem 30rem at 8% 0%, rgba(190,155,83,0.14), transparent 60%)",
+              "radial-gradient(60rem 30rem at 8% 0%, rgba(23,20,15,0.07), transparent 60%)",
           }}
         />
         <HeroLines />
@@ -36,7 +36,7 @@ export default function Home() {
               Finanzielle&nbsp;Sicherheit beginnt mit der{" "}
               <em className="text-gold not-italic">richtigen</em>&nbsp;Beratung.
             </h1>
-            <p className="mt-7 max-w-xl text-lg text-fg-muted">
+            <p className="mt-7 max-w-xl text-lg text-ink-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
               Plan, der heute wirkt und in dreißig Jahren noch trägt.
             </p>
@@ -50,7 +50,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/leistungen"
-                className="group inline-flex min-h-12 items-center gap-2 text-sm text-fg-muted transition-colors hover:text-fg"
+                className="group inline-flex min-h-12 items-center gap-2 text-sm text-ink-fg-muted transition-colors hover:text-ink-fg"
               >
                 Leistungen ansehen
                 <ArrowRight
@@ -82,7 +82,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <figcaption className="mt-4 font-mono text-2xs uppercase tracking-[0.18em] text-fg-muted">
+            <figcaption className="mt-4 font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
               {site.founder}
             </figcaption>
           </figure>
@@ -90,14 +90,14 @@ export default function Home() {
       </section>
 
       {/* ---------- Zeitachse: das Signature-Element ---------- */}
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="max-w-2xl">
             <p className="eyebrow">Was wann wirkt</p>
             <h2 className="mt-5 text-xl lg:text-2xl">
               Geld arbeitet in unterschiedlichen Zeiträumen.
             </h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               Manches senkt schon den nächsten Abschlag, anderes zahlt sich erst in dreißig Jahren
               aus. Wir sortieren beides — damit Sie wissen, was zuerst dran ist.
             </p>
@@ -109,8 +109,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Heller Einschub: der Mensch dahinter ---------- */}
-      <section className="bg-paper text-ink-fg">
+      {/* ---------- Dunkler Einschub: der Mensch dahinter ----------
+          War früher der einzige helle Bruch auf sonst dunkler Seite. Jetzt,
+          wo die Seite grundsätzlich hell ist, kehrt sich das um — dieser
+          Abschnitt ist der seltene dunkle Bruch, behält aber dieselbe Idee:
+          ein Abschnitt sticht bewusst ab. */}
+      <section className="bg-ink text-fg">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
           <div className="relative aspect-[4/3] w-full">
             <Image
@@ -123,11 +127,9 @@ export default function Home() {
           </div>
 
           <div>
-            <p className="eyebrow" style={{ color: "#8a6d28" }}>
-              Über CIC-Global
-            </p>
+            <p className="eyebrow">Über CIC-Global</p>
             <h2 className="mt-5 text-xl lg:text-2xl">Überzeugen durch Ergebnisse.</h2>
-            <div className="prose-cic mt-6 text-ink-fg-muted">
+            <div className="prose-cic mt-6 text-fg-muted">
               <p>
                 Strukturiert. Zielgerichtet. Lösungsorientiert. Wir verstehen Finanzberatung nicht
                 als Standardlösung, sondern als individuellen Prozess, der sich an den echten
@@ -140,17 +142,17 @@ export default function Home() {
               </p>
             </div>
 
-            <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-ink-fg/15 pt-6">
+            <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-white/15 pt-6">
               <div>
-                <dt className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
+                <dt className="font-mono text-2xs uppercase tracking-[0.18em] text-fg-muted">
                   Zufriedene Kunden
                 </dt>
                 <dd className="mt-1 font-display text-xl">
-                  <Counter to={150} suffix="+" />
+                  <Counter to={386} suffix="+" />
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
+                <dt className="font-mono text-2xs uppercase tracking-[0.18em] text-fg-muted">
                   Vertriebspartner
                 </dt>
                 <dd className="mt-1 font-display text-xl">
@@ -161,7 +163,7 @@ export default function Home() {
 
             <Link
               href="/ueber-uns"
-              className="group mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-ink-fg transition-colors hover:text-[#8a6d28]"
+              className="group mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-fg transition-colors hover:text-gold"
             >
               Wer wir sind
               <ArrowRight
@@ -175,19 +177,19 @@ export default function Home() {
       </section>
 
       {/* ---------- Partner: leise, als Zeile statt als Logo-Wand ---------- */}
-      <section className="border-b border-white/8 bg-surface">
+      <section className="border-b border-ink/8 bg-sand-2">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-10 sm:px-8 md:flex-row md:items-baseline md:gap-10">
           <p className="eyebrow shrink-0">Im Netzwerk</p>
-          <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-fg-muted">
+          <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink-fg-muted">
             {partners.map((p) => (
-              <li key={p}>{p}</li>
+              <li key={p.name}>{p.name}</li>
             ))}
           </ul>
         </div>
       </section>
 
       {/* ---------- Blog: redaktionelle Liste, keine Kacheln ---------- */}
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="flex flex-wrap items-baseline justify-between gap-4">
             <div>
@@ -196,7 +198,7 @@ export default function Home() {
             </div>
             <Link
               href="/blog"
-              className="group inline-flex min-h-11 items-center gap-2 text-sm text-fg-muted transition-colors hover:text-gold"
+              className="group inline-flex min-h-11 items-center gap-2 text-sm text-ink-fg-muted transition-colors hover:text-gold"
             >
               Alle Beiträge
               <ArrowRight
@@ -207,16 +209,16 @@ export default function Home() {
             </Link>
           </div>
 
-          <ul className="mt-10 border-t border-white/8">
+          <ul className="mt-10 border-t border-ink/8">
             {latest.map((a) => (
-              <li key={a.slug} className="border-b border-white/8">
+              <li key={a.slug} className="border-b border-ink/8">
                 <Link
                   href={`/blog/${a.slug}`}
-                  className="group relative grid gap-1 py-6 pr-0 transition-colors sm:grid-cols-[9rem_1fr] sm:gap-6 sm:pr-8 sm:hover:bg-white/[0.03]"
+                  className="group relative grid gap-1 py-6 pr-0 transition-colors sm:grid-cols-[9rem_1fr] sm:gap-6 sm:pr-8 sm:hover:bg-ink/[0.03]"
                 >
                   <time
                     dateTime={a.date}
-                    className="tnum font-mono text-2xs uppercase tracking-[0.14em] text-fg-muted sm:pt-1.5"
+                    className="tnum font-mono text-2xs uppercase tracking-[0.14em] text-ink-fg-muted sm:pt-1.5"
                   >
                     {formatDate(a.date)}
                   </time>
@@ -224,7 +226,7 @@ export default function Home() {
                     <span className="font-display text-lg transition-colors group-hover:text-gold">
                       {a.title}
                     </span>
-                    <span className="mt-1 block text-sm text-fg-muted">{a.lead}</span>
+                    <span className="mt-1 block text-sm text-ink-fg-muted">{a.lead}</span>
                   </span>
                   <ArrowRight
                     aria-hidden
@@ -240,12 +242,12 @@ export default function Home() {
       </section>
 
       {/* ---------- Häufige Fragen ---------- */}
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="max-w-2xl">
             <p className="eyebrow">Häufige Fragen</p>
             <h2 className="mt-5 text-xl lg:text-2xl">Bevor Sie schreiben.</h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               Was uns am häufigsten gefragt wird — kurz beantwortet, ohne Umwege.
             </p>
           </div>
@@ -266,7 +268,7 @@ export default function Home() {
             <h2 className="text-xl lg:text-2xl">
               Ganz gleich, welche Lebenssituation — es gibt eine Lösung, die passt.
             </h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               Das erste Gespräch kostet nichts und verpflichtet zu nichts. Danach wissen Sie, wo Sie
               stehen.
             </p>

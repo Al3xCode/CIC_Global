@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
 };
 
-/** Dunkler Grund fürs Farbschema — hält die mobile Browser-Chrome konsistent. */
+/** Sand-Grund fürs Farbschema — hält die mobile Browser-Chrome konsistent. */
 export const viewport: Viewport = {
-  themeColor: "#0a0a0c",
+  themeColor: "#f1e4c9",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

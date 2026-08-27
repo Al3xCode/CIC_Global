@@ -58,7 +58,7 @@ export function HeroLines() {
       {visible && (
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <svg
-            className="h-full w-full text-gold"
+            className="h-full w-full text-gold-soft"
             viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
             preserveAspectRatio="none"
             fill="none"
@@ -91,7 +91,7 @@ export function HeroLines() {
         onClick={() => setVisible((v) => !v)}
         aria-pressed={visible}
         aria-label={visible ? "Hintergrund-Animation ausblenden" : "Hintergrund-Animation einblenden"}
-        className="absolute bottom-5 left-5 flex h-9 w-9 items-center justify-center border border-white/12 text-fg-muted/70 backdrop-blur-sm transition-colors hover:border-gold/50 hover:text-gold"
+        className="absolute bottom-5 left-5 flex h-9 w-9 items-center justify-center border border-ink/12 text-ink-fg-muted/70 backdrop-blur-sm transition-colors hover:border-gold/50 hover:text-gold"
       >
         {visible ? (
           <Pause aria-hidden size={14} strokeWidth={1.5} />

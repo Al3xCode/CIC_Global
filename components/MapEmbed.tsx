@@ -15,10 +15,10 @@ export function MapEmbed() {
 
   if (!loaded) {
     return (
-      <div className="flex min-h-[320px] flex-col items-center justify-center border border-white/12 bg-surface p-8 text-center sm:min-h-[405px]">
+      <div className="flex min-h-[320px] flex-col items-center justify-center border border-ink/12 bg-sand-2 p-8 text-center sm:min-h-[405px]">
         <MapPin aria-hidden size={26} strokeWidth={1.5} className="text-gold" />
         <p className="mt-5 font-display text-lg">Karte laden</p>
-        <p className="mt-2 max-w-sm text-sm text-fg-muted">
+        <p className="mt-2 max-w-sm text-sm text-ink-fg-muted">
           Beim Laden wird eine Verbindung zu Google aufgebaut und Ihre IP-Adresse übertragen.
         </p>
         <button
@@ -38,7 +38,7 @@ export function MapEmbed() {
       src={MAPS_SRC}
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      className="h-[320px] w-full border border-white/12 sm:h-[405px]"
+      className="h-[320px] w-full border border-ink/12 sm:h-[405px]"
     />
   );
 }

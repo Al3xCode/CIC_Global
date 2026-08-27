@@ -13,11 +13,11 @@ export const metadata = pageMeta({
 export default function Leistungen() {
   return (
     <>
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <p className="eyebrow">Leistungen</p>
           <h1 className="mt-5 max-w-3xl text-[2rem] sm:text-2xl lg:text-3xl">Für jeden maßgeschneidert.</h1>
-          <p className="mt-6 max-w-2xl text-lg text-fg-muted">
+          <p className="mt-6 max-w-2xl text-lg text-ink-fg-muted">
             Fünf Bereiche, ein Plan. Wir ordnen sie nicht nach Produktkategorie, sondern danach,
             wann sie bei Ihnen ankommen.
           </p>
@@ -28,8 +28,34 @@ export default function Leistungen() {
         </div>
       </section>
 
+      {/* ---------- Exklusivpartner ---------- */}
+      <section className="border-b border-ink/8">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Exklusivpartner</p>
+            <h2 className="mt-5 text-xl lg:text-2xl">Starke Partner im Rücken.</h2>
+            <p className="mt-5 text-ink-fg-muted">
+              Wir arbeiten mit einem sorgfältig ausgewählten Netzwerk renommierter
+              Versicherungs-, Rechtsschutz- und Energiedienstleister. Das gibt Ihnen Zugang zu
+              leistungsstarken Produkten statt zu einem einzelnen Anbieter.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {partners.map((p) => (
+              <div key={p.name} className="border border-ink/12 p-8">
+                <p className="font-display text-lg">{p.name}</p>
+                <p className="mt-2 font-mono text-2xs uppercase tracking-[0.18em] text-gold">
+                  {p.category}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Ersparnis-Aussage — als Zahl gesetzt, nicht als Kachel */}
-      <section className="border-b border-white/8 bg-surface">
+      <section className="border-b border-ink/8 bg-sand-2">
         <div className="mx-auto grid max-w-6xl gap-6 px-5 py-16 sm:px-8 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-14">
           <p className="tnum font-display text-3xl text-gold">10.500 €</p>
           <div>
@@ -37,7 +63,7 @@ export default function Leistungen() {
               sparen Unternehmer mit uns im Schnitt pro Jahr — bei gleichzeitig besserem
               Versicherungsschutz.
             </p>
-            <p className="mt-3 max-w-xl text-sm text-fg-muted">
+            <p className="mt-3 max-w-xl text-sm text-ink-fg-muted">
               Dank einer strategischen Finanzoptimierung profitieren Sie von einem deutlich besseren
               Preis-Leistungs-Verhältnis: mehr Leistungen und umfangreicherer Service zu
               attraktiveren Konditionen.
@@ -46,37 +72,11 @@ export default function Leistungen() {
         </div>
       </section>
 
-      <section className="border-b border-white/8">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Im Netzwerk</p>
-            <h2 className="mt-5 text-xl lg:text-2xl">Hinter jeder Beratung stehen starke Partner.</h2>
-            <p className="mt-5 text-fg-muted">
-              Wir arbeiten mit einem sorgfältig ausgewählten Netzwerk renommierter Versicherungs-,
-              Finanzierungs- und Energiedienstleister. Diese langjährigen Kooperationen geben
-              unseren Kunden Zugang zu leistungsstarken Produkten und einer breiten Auswahl an
-              Möglichkeiten.
-            </p>
-          </div>
-
-          <ul className="mt-10 border-t border-white/8">
-            {partners.map((p) => (
-              <li
-                key={p}
-                className="border-b border-white/8 py-5 font-mono text-sm tracking-wide text-fg-muted"
-              >
-                {p}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <section>
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="max-w-2xl">
             <h2 className="text-xl lg:text-2xl">Wo stehen Sie gerade?</h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               Die Finanzanalyse ist der Anfang. Sie kostet nichts und zeigt, welcher der fünf
               Bereiche bei Ihnen zuerst dran ist.
             </p>

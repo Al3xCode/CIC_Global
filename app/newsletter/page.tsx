@@ -26,13 +26,13 @@ const topics = [
 export default function Newsletter() {
   return (
     <>
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <p className="eyebrow">Newsletter</p>
           <h1 className="mt-5 max-w-3xl text-[2rem] sm:text-2xl lg:text-3xl">
             Alle paar Wochen eine E-Mail, die sich lohnt.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-fg-muted">
+          <p className="mt-6 max-w-2xl text-lg text-ink-fg-muted">
             Kein Produktversand, keine Werbeflut. Nur das, was gerade wichtig ist — und was Sie
             daraus machen können.
           </p>
@@ -46,11 +46,11 @@ export default function Newsletter() {
       <section>
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <h2 className="text-xl lg:text-2xl">Worum es geht</h2>
-          <ul className="mt-10 border-t border-white/8">
+          <ul className="mt-10 border-t border-ink/8">
             {topics.map((t) => (
-              <li key={t.title} className="grid gap-2 border-b border-white/8 py-6 sm:grid-cols-[16rem_1fr] sm:gap-8">
+              <li key={t.title} className="grid gap-2 border-b border-ink/8 py-6 sm:grid-cols-[16rem_1fr] sm:gap-8">
                 <h3 className="text-lg">{t.title}</h3>
-                <p className="text-sm text-fg-muted">{t.body}</p>
+                <p className="text-sm text-ink-fg-muted">{t.body}</p>
               </li>
             ))}
           </ul>

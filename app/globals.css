@@ -5,16 +5,24 @@
   Gold ist Akzent, nie Fläche. Ink ist bewusst nicht #000 (OLED-Smear).
 */
 @theme {
+  /* Dunkles Set — jetzt nur noch für Header/Footer, den bewussten dunklen
+     Rahmen um die sonst helle Seite. */
   --color-ink: #0a0a0c;
   --color-surface: #131317;
   --color-surface-2: #1b1b20;
+  --color-fg: #edeae3;
+  --color-fg-muted: #9c978c;
+
   --color-gold: #be9b53;
   --color-gold-bright: #d8b76a;
   --color-gold-soft: #6d5a31;
+
+  /* Helles Set — jetzt die Standardfläche der Seite. Eigene Beige-Palette,
+     bewusst kein Weiß und bewusst anders als die bisherigen Paper-Töne. */
+  --color-sand: #f1e4c9;
+  --color-sand-2: #e6d2a8;
   --color-paper: #f2efe8;
   --color-paper-2: #e6e1d6;
-  --color-fg: #edeae3;
-  --color-fg-muted: #9c978c;
   --color-ink-fg: #17161a;
   --color-ink-fg-muted: #58544c;
 
@@ -37,14 +45,14 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    /* Lässt Checkboxen, Textfelder und Scrollbalken nativ dunkel rendern
-       statt als weiße Kästen auf dunklem Grund. */
-    color-scheme: dark;
+    /* Seite ist jetzt hell — native Formularelemente/Scrollbar sollen das
+       spiegeln statt in dunkler Chrome auf hellem Grund zu rendern. */
+    color-scheme: light;
   }
 
   body {
-    background-color: var(--color-ink);
-    color: var(--color-fg);
+    background-color: var(--color-sand);
+    color: var(--color-ink-fg);
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.65;

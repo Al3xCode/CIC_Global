@@ -9,7 +9,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
  * Drei Dinge sind hier bewusst so gebaut:
  *
  * 1. Serverseitig steht sofort die echte Zahl im HTML. Ohne JavaScript —
- *    und für Suchmaschinen — ist "150+" da, nicht "0+".
+ *    und für Suchmaschinen — ist "386+" da, nicht "0+".
  * 2. Auf 0 zurückgesetzt wird erst im useLayoutEffect, also vor dem ersten
  *    Paint. Dadurch blitzt die Endzahl nicht kurz auf.
  * 3. Der Start hängt an drei unabhängigen Auslösern (IntersectionObserver,

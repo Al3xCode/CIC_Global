@@ -17,11 +17,11 @@ const mapsQuery = encodeURIComponent(
 export default function Kontakt() {
   return (
     <>
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <p className="eyebrow">Kontakt</p>
           <h1 className="mt-5 max-w-2xl text-[2rem] sm:text-2xl lg:text-3xl">Sprechen wir darüber.</h1>
-          <p className="mt-6 max-w-xl text-lg text-fg-muted">
+          <p className="mt-6 max-w-xl text-lg text-ink-fg-muted">
             Das Erstgespräch ist kostenlos und unverbindlich. Sie erreichen uns telefonisch, per
             E-Mail oder über das Formular.
           </p>
@@ -39,20 +39,20 @@ export default function Kontakt() {
               <div className="mt-6 flex flex-col gap-1 font-mono text-sm">
                 <a
                   href={`tel:${site.phoneHref}`}
-                  className="tnum flex min-h-11 items-center text-fg transition-colors hover:text-gold"
+                  className="tnum flex min-h-11 items-center text-ink-fg transition-colors hover:text-gold"
                 >
                   {site.phone}
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex min-h-11 items-center text-fg transition-colors hover:text-gold"
+                  className="flex min-h-11 items-center text-ink-fg transition-colors hover:text-gold"
                 >
                   {site.email}
                 </a>
               </div>
 
               <h2 className="eyebrow mt-10">Standort</h2>
-              <address className="mt-6 font-mono text-sm not-italic leading-relaxed text-fg-muted">
+              <address className="mt-6 font-mono text-sm not-italic leading-relaxed text-ink-fg-muted">
                 {site.street}
                 <br />
                 {site.postalCode} {site.city}
@@ -67,10 +67,10 @@ export default function Kontakt() {
               </a>
 
               <h2 className="eyebrow mt-10">Öffnungszeiten</h2>
-              <dl className="mt-6 font-mono text-sm text-fg-muted">
+              <dl className="mt-6 font-mono text-sm text-ink-fg-muted">
                 {site.hours.map((h) => (
                   <div key={h.days} className="flex gap-4 py-0.5">
-                    <dt className="w-16 shrink-0 text-fg">{h.days}</dt>
+                    <dt className="w-16 shrink-0 text-ink-fg">{h.days}</dt>
                     <dd className="tnum">{h.time}</dd>
                   </div>
                 ))}
@@ -81,12 +81,12 @@ export default function Kontakt() {
       </section>
 
       {/* ---------- Direkt online buchen ---------- */}
-      <section className="border-b border-white/8">
+      <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="max-w-2xl">
             <p className="eyebrow">Terminbuchung</p>
             <h2 className="mt-5 text-xl lg:text-2xl">Lieber gleich einen Termin fixieren?</h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               Wählen Sie direkt einen freien Slot in unserem Kalender — ganz ohne Hin- und
               Herschreiben.
             </p>
@@ -104,7 +104,7 @@ export default function Kontakt() {
           <div className="max-w-2xl">
             <p className="eyebrow">Standort</p>
             <h2 className="mt-5 text-xl lg:text-2xl">Unser Standort in Gelsenkirchen.</h2>
-            <p className="mt-5 text-fg-muted">
+            <p className="mt-5 text-ink-fg-muted">
               {site.street}, {site.postalCode} {site.city} — mitten in der Stadt, gut zu
               erreichen.
             </p>

@@ -130,7 +130,7 @@ function TimelineItem({
 
       <h3 className="text-xl">{service.title}</h3>
       <p className="mt-1 text-sm text-gold-bright">{service.claim}</p>
-      <p className="mt-3 text-sm text-fg-muted">{service.body}</p>
+      <p className="mt-3 text-sm text-ink-fg-muted">{service.body}</p>
     </li>
   );
 }

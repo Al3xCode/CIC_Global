@@ -72,11 +72,17 @@ export const services: Service[] = [
   },
 ];
 
-/** Partner aus dem Netzwerk. Namen als Text — für Logos fehlen die Nutzungsrechte. */
-export const partners = [
-  "Barmenia Gothaer",
-  "ROLAND Rechtsschutz",
-  "Vattenfall",
+/**
+ * Exklusivpartner aus dem Netzwerk. Namen als Text — für Logos fehlen die
+ * Nutzungsrechte. `category` ist das öffentlich bekannte Geschäftsfeld des
+ * jeweiligen Unternehmens, keine Behauptung über die konkrete Zusammenarbeit.
+ */
+export type Partner = { name: string; category: string };
+
+export const partners: Partner[] = [
+  { name: "Barmenia Gothaer", category: "Versicherungen" },
+  { name: "ROLAND Rechtsschutz", category: "Rechtsschutz" },
+  { name: "Vattenfall", category: "Energie" },
 ];
 
 /**

@@ -11,9 +11,8 @@ import { CalendarClock } from "lucide-react";
  *
  * Die alten background_color/text_color-URL-Parameter werden von Calendly
  * inzwischen ignoriert (Branding kommt nur noch aus den Account-Settings) —
- * das Widget bleibt weiß. Deshalb bekommt es hier einen bewussten hellen
- * Rahmen statt gegen ein weißes Rechteck auf Schwarz anzukämpfen, analog zum
- * "Über uns"-Papier-Einschub auf der Startseite.
+ * das Widget bleibt weiß. Auf der jetzt hellen Seite reicht dafür ein
+ * schlichter Rahmen statt einer eigenen Hintergrundfläche.
  */
 const CALENDLY_URL = "https://calendly.com/kontakt-cic-global/30min?hide_event_type_details=1";
 
@@ -81,10 +80,10 @@ export function CalendlyEmbed() {
 
   if (!loaded) {
     return (
-      <div className="mx-auto flex min-h-[360px] max-w-3xl flex-col items-center justify-center border border-white/12 bg-surface p-8 text-center sm:p-10">
+      <div className="mx-auto flex min-h-[360px] max-w-3xl flex-col items-center justify-center border border-ink/12 bg-sand-2 p-8 text-center sm:p-10">
         <CalendarClock aria-hidden size={26} strokeWidth={1.5} className="text-gold" />
         <p className="mt-5 font-display text-lg">Kalender laden</p>
-        <p className="mt-2 max-w-sm text-sm text-fg-muted">
+        <p className="mt-2 max-w-sm text-sm text-ink-fg-muted">
           Dafür binden wir Calendly ein. Erst mit Klick wird der Kalender geladen — vorher findet
           keine Verbindung zu Calendly statt.
         </p>
@@ -104,7 +103,7 @@ export function CalendlyEmbed() {
       <div
         role="status"
         aria-live="polite"
-        className="relative mx-auto max-w-3xl overflow-hidden bg-paper p-2 sm:p-3"
+        className="relative mx-auto max-w-3xl overflow-hidden border border-ink/12 p-2 sm:p-3"
         style={{ height: ready ? height + 16 : FALLBACK_HEIGHT }}
       >
         {!ready && (
