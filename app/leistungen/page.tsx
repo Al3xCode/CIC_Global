@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Timeline } from "@/components/Timeline";
 import { pageMeta } from "@/lib/seo";
@@ -13,8 +14,16 @@ export const metadata = pageMeta({
 export default function Leistungen() {
   return (
     <>
-      <section className="border-b border-ink/8">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+      <section className="relative overflow-hidden border-b border-ink/8">
+        <Image
+          aria-hidden
+          src="/img/leistungen-ticker-bg.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="pointer-events-none select-none object-cover opacity-[0.1]"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <p className="eyebrow">Leistungen</p>
           <h1 className="mt-5 max-w-3xl text-[2rem] sm:text-2xl lg:text-3xl">Für jeden maßgeschneidert.</h1>
           <p className="mt-6 max-w-2xl text-lg text-ink-fg-muted">

@@ -22,6 +22,7 @@ const KEEP = {
   "design-ohne-titel-7.png": { out: "portrait-2.webp", width: 1200 },
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },
   "chatgpt-image-5.-ma-rz-2026-01_07_19.png": { out: "logo-cic-global.webp", width: 800 },
+  "AdobeStock_312927435.jpeg": { out: "leistungen-ticker-bg.webp", width: 2000 },
 };
 
 const kb = (n) => Math.round(n / 1024);
