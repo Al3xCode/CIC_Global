@@ -167,7 +167,7 @@ export default function Karriere() {
 
                 <div className="mt-auto pt-9">
                   <a
-                    href={`mailto:${site.email}?subject=${job.mailSubject}`}
+                    href={`mailto:${site.email}?subject=${encodeURIComponent(job.mailSubject)}`}
                     className="btn-primary inline-flex min-h-12 items-center px-6 text-sm font-medium"
                   >
                     Jetzt bewerben
