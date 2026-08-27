@@ -102,9 +102,12 @@ export default function Karriere() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <h2 className="text-xl lg:text-2xl">Offene Stellen</h2>
 
-          <div className="mt-8 flex flex-col gap-8">
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
             {jobs.map((job) => (
-              <div key={job.title} className="max-w-3xl border border-ink/12 p-8 sm:p-10">
+              <div
+                key={job.title}
+                className="flex flex-col border border-ink/12 p-8 sm:p-10"
+              >
                 <p className="font-mono text-2xs uppercase tracking-[0.18em] text-gold">
                   {job.tag}
                 </p>
@@ -116,37 +119,35 @@ export default function Karriere() {
                   </p>
                 ))}
 
-                <div className="mt-10 grid gap-10 sm:grid-cols-2">
-                  <div>
-                    <p className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
-                      Wen wir suchen
-                    </p>
-                    <ul className="mt-4 flex flex-col gap-2.5">
-                      {job.requirements.map((text) => (
-                        <li key={text} className="flex gap-3 text-sm text-ink-fg-muted">
-                          <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-gold-soft" />
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <p className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
-                      Das erwartet Sie
-                    </p>
-                    <ul className="mt-4 flex flex-col gap-2.5">
-                      {BENEFITS.map((text) => (
-                        <li key={text} className="flex gap-3 text-sm text-ink-fg-muted">
-                          <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-gold-soft" />
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="mt-10">
+                  <p className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
+                    Wen wir suchen
+                  </p>
+                  <ul className="mt-4 flex flex-col gap-2.5">
+                    {job.requirements.map((text) => (
+                      <li key={text} className="flex gap-3 text-sm text-ink-fg-muted">
+                        <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-gold-soft" />
+                        {text}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="mt-10 border-t border-ink/8 pt-8">
+                <div className="mt-8">
+                  <p className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
+                    Das erwartet Sie
+                  </p>
+                  <ul className="mt-4 flex flex-col gap-2.5">
+                    {BENEFITS.map((text) => (
+                      <li key={text} className="flex gap-3 text-sm text-ink-fg-muted">
+                        <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-gold-soft" />
+                        {text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 border-t border-ink/8 pt-8">
                   <p className="font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
                     Ihre Aufgaben
                   </p>
@@ -164,13 +165,15 @@ export default function Karriere() {
                   <p className="mt-8 text-sm text-ink-fg-muted">Standorte: {job.locations}</p>
                 )}
 
-                <a
-                  href={`mailto:${site.email}?subject=${job.mailSubject}`}
-                  className="btn-primary mt-9 inline-flex min-h-12 items-center px-6 text-sm font-medium"
-                >
-                  Jetzt bewerben
-                </a>
-                <p className="mt-5 font-mono text-xs text-ink-fg-muted">{site.email}</p>
+                <div className="mt-auto pt-9">
+                  <a
+                    href={`mailto:${site.email}?subject=${job.mailSubject}`}
+                    className="btn-primary inline-flex min-h-12 items-center px-6 text-sm font-medium"
+                  >
+                    Jetzt bewerben
+                  </a>
+                  <p className="mt-5 font-mono text-xs text-ink-fg-muted">{site.email}</p>
+                </div>
               </div>
             ))}
           </div>

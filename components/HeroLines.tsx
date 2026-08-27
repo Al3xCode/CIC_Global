@@ -46,12 +46,16 @@ function buildPaths() {
         VIEW_W + 80
       },${baseY}`,
       opacity: [0, peak, peak * 0.3, peak * 0.85, 0.04, peak, 0],
+      // Zeiten der Keyframes: der erste Höhepunkt kommt bewusst früh
+      // (bei 12% der Dauer), damit sichtbar wird, dass sich etwas aufbaut,
+      // statt dass die Linie die meiste Zeit unsichtbar bei 0 verharrt.
+      times: [0, 0.12, 0.35, 0.55, 0.75, 0.9, 1],
       x: [-30, 15, -12, 26, 0, -18, -30],
       width: 1 + (i % 3) * 0.6,
-      duration: 34 + (i % 7) * 6,
-      // Zeitversetzter Start: die Linien bauen sich nach und nach auf statt
-      // alle gleichzeitig voll da zu sein.
-      delay: i * 1.3,
+      duration: 26 + (i % 7) * 5,
+      // Zeitversetzter Start, aber kurz: die Linien bauen sich innerhalb der
+      // ersten ~8s nach und nach auf statt alle gleichzeitig voll da zu sein.
+      delay: i * 0.6,
     };
   });
 }
@@ -90,6 +94,7 @@ export function HeroLines() {
                 }}
                 transition={{
                   duration: path.duration,
+                  times: path.times,
                   delay: path.delay,
                   repeat: Infinity,
                   ease: "easeInOut",
