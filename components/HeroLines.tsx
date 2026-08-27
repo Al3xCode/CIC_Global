@@ -19,6 +19,12 @@ import { Pause, Play } from "lucide-react";
  * viewBox + preserveAspectRatio="none" strecken die Wellen exakt auf die
  * tatsächliche Breite/Höhe des Hero — dadurch laufen sie wirklich von links
  * nach rechts über den ganzen Bereich statt nur in einer Ecke zu kleben.
+ *
+ * Zwei überlagerte Rhythmen sorgen dafür, dass das Muster nie "fertig"
+ * wirkt: Jede Linie startet zeitversetzt (delay pro Index) und pulsiert
+ * über mehrere Zwischenwerte statt nur an/aus — dazu eine langsame
+ * "Atem"-Hüllkurve auf dem ganzen SVG, die die Gesamtpräsenz über ~50s
+ * unregelmäßig steigen und wieder abfallen lässt, aber nie auf 0 geht.
  */
 const VIEW_W = 1440;
 const VIEW_H = 640;
@@ -32,15 +38,20 @@ function buildPaths() {
     const dir = i % 2 === 0 ? 1 : -1;
     const c1x = VIEW_W * 0.28;
     const c2x = VIEW_W * 0.68;
+    const peak = 0.14 + (i % 5) * 0.045;
 
     return {
       id: i,
       d: `M -80,${baseY} C ${c1x},${baseY + dir * amp} ${c2x},${baseY - dir * amp} ${
         VIEW_W + 80
       },${baseY}`,
-      opacity: 0.16 + (i % 5) * 0.05,
+      opacity: [0, peak, peak * 0.3, peak * 0.85, 0.04, peak, 0],
+      x: [-30, 15, -12, 26, 0, -18, -30],
       width: 1 + (i % 3) * 0.6,
-      duration: 26 + (i % 6) * 4,
+      duration: 34 + (i % 7) * 6,
+      // Zeitversetzter Start: die Linien bauen sich nach und nach auf statt
+      // alle gleichzeitig voll da zu sein.
+      delay: i * 1.3,
     };
   });
 }
@@ -57,11 +68,13 @@ export function HeroLines() {
     <>
       {visible && (
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <svg
-            className="h-full w-full text-gold-soft"
+          <motion.svg
+            className="h-full w-full text-gold"
             viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
             preserveAspectRatio="none"
             fill="none"
+            animate={{ opacity: [0.5, 1, 0.45, 0.8, 0.3, 0.95, 0.5] }}
+            transition={{ duration: 52, repeat: Infinity, ease: "easeInOut" }}
           >
             {paths.map((path) => (
               <motion.path
@@ -72,17 +85,18 @@ export function HeroLines() {
                 strokeLinecap="round"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{
-                  opacity: [0, path.opacity, 0],
-                  x: [-30, 30, -30],
+                  opacity: path.opacity,
+                  x: path.x,
                 }}
                 transition={{
                   duration: path.duration,
+                  delay: path.delay,
                   repeat: Infinity,
-                  ease: "linear",
+                  ease: "easeInOut",
                 }}
               />
             ))}
-          </svg>
+          </motion.svg>
         </div>
       )}
 
