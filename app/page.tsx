@@ -119,47 +119,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Erfahren Sie mehr über CIC-Global ---------- */}
-      <section className="border-b border-ink/8">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Entdecken</p>
-            <h2 className="mt-5 text-xl lg:text-2xl">Erfahren Sie mehr über CIC-Global.</h2>
-            <p className="mt-5 text-ink-fg-muted">
-              Von Null bis hin zu einer finanziell abgesicherten Zukunft.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {exploreCards.map((card) => (
-              <div key={card.title} className="flex flex-col border border-ink/12">
-                <div
-                  className={`relative aspect-[4/3] w-full ${card.fit === "contain" ? "bg-paper" : ""}`}
-                >
-                  <Image
-                    src={card.img}
-                    alt={card.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className={card.fit === "contain" ? "object-contain p-10" : "object-cover"}
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-lg">{card.title}</h3>
-                  <p className="mt-2 text-sm text-ink-fg-muted">{card.body}</p>
-                  <Link
-                    href={card.href}
-                    className="btn-secondary mt-6 inline-flex min-h-11 items-center self-start px-5 text-sm"
-                  >
-                    {card.cta}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ---------- Zeitachse: das Signature-Element ---------- */}
       <section className="border-b border-ink/8">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
@@ -243,6 +202,47 @@ export default function Home() {
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Erfahren Sie mehr über CIC-Global ---------- */}
+      <section className="border-b border-ink/8">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Entdecken</p>
+            <h2 className="mt-5 text-xl lg:text-2xl">Erfahren Sie mehr über CIC-Global.</h2>
+            <p className="mt-5 text-ink-fg-muted">
+              Von Null bis hin zu einer finanziell abgesicherten Zukunft.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {exploreCards.map((card) => (
+              <div key={card.title} className="flex flex-col border border-ink/12">
+                <div
+                  className={`relative aspect-[4/3] w-full ${card.fit === "contain" ? "bg-paper" : ""}`}
+                >
+                  <Image
+                    src={card.img}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className={card.fit === "contain" ? "object-contain p-10" : "object-cover"}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-lg">{card.title}</h3>
+                  <p className="mt-2 text-sm text-ink-fg-muted">{card.body}</p>
+                  <Link
+                    href={card.href}
+                    className="btn-secondary mt-6 inline-flex min-h-11 items-center self-start px-5 text-sm"
+                  >
+                    {card.cta}
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
