@@ -8,6 +8,36 @@ import { Timeline } from "@/components/Timeline";
 import { faqJsonLd } from "@/lib/seo";
 import { articles, faqs, formatDate, partners, services, site } from "@/lib/site";
 
+const exploreCards = [
+  {
+    title: "Leistungen",
+    body: "Mit der richtigen Finanzoptimierung mehr Leistung für bessere Konditionen.",
+    href: "/leistungen",
+    cta: "Leistungen ansehen",
+    img: "/img/card-leistungen.webp",
+    alt: "Finanzanalyse auf Laptop und Smartphone",
+    fit: "cover" as const,
+  },
+  {
+    title: "Über uns",
+    body: "Wer wir sind. Woher wir stammen. Wofür wir stehen.",
+    href: "/ueber-uns",
+    cta: "Über uns",
+    img: "/img/logo-cic-global.webp",
+    alt: `${site.name} Logo`,
+    fit: "contain" as const,
+  },
+  {
+    title: "Karriere",
+    body: "Werden Sie Teil von CIC-Global und profitieren Sie von attraktiven Benefits.",
+    href: "/karriere",
+    cta: "Stellenangebote",
+    img: "/img/card-karriere.webp",
+    alt: "Gepflegtes Auftreten im Vertrieb",
+    fit: "cover" as const,
+  },
+];
+
 export default function Home() {
   const latest = articles.slice(0, 3);
 
@@ -86,6 +116,47 @@ export default function Home() {
               {site.founder}
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      {/* ---------- Erfahren Sie mehr über CIC-Global ---------- */}
+      <section className="border-b border-ink/8">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Entdecken</p>
+            <h2 className="mt-5 text-xl lg:text-2xl">Erfahren Sie mehr über CIC-Global.</h2>
+            <p className="mt-5 text-ink-fg-muted">
+              Von Null bis hin zu einer finanziell abgesicherten Zukunft.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {exploreCards.map((card) => (
+              <div key={card.title} className="flex flex-col border border-ink/12">
+                <div
+                  className={`relative aspect-[4/3] w-full ${card.fit === "contain" ? "bg-paper" : ""}`}
+                >
+                  <Image
+                    src={card.img}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className={card.fit === "contain" ? "object-contain p-10" : "object-cover"}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-lg">{card.title}</h3>
+                  <p className="mt-2 text-sm text-ink-fg-muted">{card.body}</p>
+                  <Link
+                    href={card.href}
+                    className="btn-secondary mt-6 inline-flex min-h-11 items-center self-start px-5 text-sm"
+                  >
+                    {card.cta}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

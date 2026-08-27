@@ -42,10 +42,10 @@ const jobs = [
     mailSubject: "Bewerbung Vertriebsmitarbeiter",
   },
   {
-    tag: "Vertrieb · Bochum · Haupt- oder nebenberuflich",
+    tag: "Vertrieb · Gelsenkirchen · Haupt- oder nebenberuflich",
     title: "Vertrieb Telefonakquise (m/w/d)",
     intro: [
-      "Sie gehen gern auf Menschen zu und überzeugen lieber im persönlichen Gespräch als am Telefon allein? Für unser Team in Bochum suchen wir Verstärkung im Außenvertrieb, die eng mit unserer Telefonakquise zusammenarbeitet.",
+      "Sie gehen gern auf Menschen zu und überzeugen lieber im persönlichen Gespräch als am Telefon allein? Für unser Team in Gelsenkirchen suchen wir Verstärkung im Außenvertrieb, die eng mit unserer Telefonakquise zusammenarbeitet.",
     ],
     requirements: [
       "Sie treten gepflegt und selbstbewusst auf und hinterlassen einen professionellen ersten Eindruck.",

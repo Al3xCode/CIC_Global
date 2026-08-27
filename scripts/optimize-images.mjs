@@ -23,6 +23,8 @@ const KEEP = {
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },
   "chatgpt-image-5.-ma-rz-2026-01_07_19.png": { out: "logo-cic-global.webp", width: 800 },
   "AdobeStock_312927435.jpeg": { out: "leistungen-ticker-bg.webp", width: 2000 },
+  "screenshot-leistungen-card.png": { out: "card-leistungen.webp", width: 800 },
+  "screenshot-karriere-card.png": { out: "card-karriere.webp", width: 800 },
 };
 
 const kb = (n) => Math.round(n / 1024);
