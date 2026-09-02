@@ -18,6 +18,11 @@ const DIR = "public/img";
 /** Zielbreite = größte gerenderte CSS-Breite x2 für Retina, plus etwas Reserve. */
 const KEEP = {
   "design-ohne-titel-6.png": { out: "portrait-hero.webp", width: 1200 },
+  // Querformat-Aufnahme für den Hero. Quelldatei einfach als
+  // public/img/hero-wide.png (oder .jpg unten ergänzen) ablegen und das
+  // Skript laufen lassen — der Hero rendert bis 1152 px breit, x2 für Retina.
+  "hero-wide.png": { out: "portrait-hero-wide.webp", width: 2304 },
+  "hero-wide.jpg": { out: "portrait-hero-wide.webp", width: 2304 },
   "design-ohne-titel-8.png": { out: "portrait-buero.webp", width: 1400 },
   "design-ohne-titel-7.png": { out: "portrait-2.webp", width: 1200 },
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },

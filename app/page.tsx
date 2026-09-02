@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden border-b border-ink/8 lg:min-h-[115vh]">
+      <section className="relative overflow-hidden border-b border-ink/8">
         {/* Sehr leise Vignette — keine Fläche, nur Tiefe hinter dem Text */}
         <div
           aria-hidden
@@ -56,8 +56,8 @@ export default function Home() {
         />
         <HeroLines />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.25fr_1fr] lg:gap-14 lg:py-28">
-          <div>
+        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <div className="max-w-3xl">
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden className="h-px w-6 bg-gold" />
               Finanzberatung · {site.city}
@@ -93,22 +93,23 @@ export default function Home() {
 
           </div>
 
-          <figure className="m-0">
+          <figure className="m-0 mt-14 lg:mt-20">
             <div className="relative">
-              {/* Versetzter Gold-Rahmen hinter dem Portrait — gibt dem Bild Gewicht,
-                  ohne eine Fläche zu füllen. */}
+              {/* Versetzter Gold-Rahmen hinter dem Bild — gibt ihm Gewicht,
+                  ohne eine Fläche zu füllen. Folgt demselben Seitenverhältnis
+                  wie das Bild, damit der Versatz überall gleich breit bleibt. */}
               <div
                 aria-hidden
-                className="absolute -bottom-4 -right-4 hidden aspect-[3/4] w-full border border-gold/50 sm:block"
+                className="absolute -bottom-4 -right-4 hidden aspect-[4/3] w-full border border-gold/50 sm:block sm:aspect-[16/9]"
               />
-              <div className="relative aspect-[3/4] w-full">
+              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
                 <Image
-                  src="/img/portrait-hero.webp"
-                  alt={`${site.founder}, Gründer von ${site.name}`}
+                  src="/img/portrait-hero-wide.webp"
+                  alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-top"
+                  sizes="(max-width: 1152px) 100vw, 1152px"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
