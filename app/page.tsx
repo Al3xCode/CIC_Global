@@ -56,15 +56,18 @@ export default function Home() {
         />
         <HeroLines />
 
-        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="max-w-3xl">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:py-24">
+          {/* min-w-0: sonst zieht die (durch &nbsp; unumbrechbare) Überschrift
+              die erste Spalte über ihren fr-Anteil hinaus breit und drückt das
+              Bild klein. */}
+          <div className="min-w-0">
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden className="h-px w-6 bg-gold" />
               Finanzberatung · {site.city}
             </p>
-            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[4rem]">
-              Finanzielle&nbsp;Sicherheit beginnt mit der{" "}
-              <em className="text-gold not-italic">richtigen</em>&nbsp;Beratung.
+            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[3.375rem]">
+              Finanzielle Sicherheit beginnt mit der{" "}
+              <em className="text-gold not-italic">richtigen</em> Beratung.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-ink-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
@@ -93,22 +96,26 @@ export default function Home() {
 
           </div>
 
-          <figure className="m-0 mt-14 lg:mt-20">
+          <figure className="m-0 mt-4 lg:mt-0">
             <div className="relative">
               {/* Versetzter Gold-Rahmen hinter dem Bild — gibt ihm Gewicht,
                   ohne eine Fläche zu füllen. Folgt demselben Seitenverhältnis
                   wie das Bild, damit der Versatz überall gleich breit bleibt. */}
               <div
                 aria-hidden
-                className="absolute -bottom-4 -right-4 hidden aspect-[4/3] w-full border border-gold/50 sm:block sm:aspect-[16/9]"
+                className="absolute -bottom-4 -right-4 hidden aspect-[4/3] w-full border border-gold/50 sm:block sm:aspect-[16/9] lg:aspect-[4/3]"
               />
-              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
+              {/* 16:9 nur dort, wo das Bild über die volle Breite läuft. In der
+                  schmaleren rechten Spalte wäre es ein flacher Streifen —
+                  deshalb ab lg wieder 4:3, das füllt die Spaltenhöhe neben
+                  dem Text. */}
+              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[4/3]">
                 <Image
                   src="/img/portrait-hero-wide.webp"
                   alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
                   fill
                   priority
-                  sizes="(max-width: 1152px) 100vw, 1152px"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center"
                 />
               </div>
