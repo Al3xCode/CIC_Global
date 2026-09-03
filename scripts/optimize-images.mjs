@@ -17,21 +17,10 @@ const DIR = "public/img";
 
 /** Zielbreite = größte gerenderte CSS-Breite x2 für Retina, plus etwas Reserve. */
 const KEEP = {
-  // Hero-Hintergrund. Aus der Originalaufnahme (7008x4672) geschnitten — die
-  // Werte stammen aus einem Bildabgleich mit der vom Kunden gezeichneten
-  // Vorlage, damit der Ausschnitt exakt ihrem Entwurf entspricht: rechts fällt
-  // die leere Wandfläche weg, oben die Wand über dem Kopf, unten die
-  // Tischkante. Ergebnis ist 16:9 mit freier Fläche links für Schrift und
-  // Verlauf; Laptop, Ärmel, Stift, Buch und Kopf bleiben vollständig drin.
-  // Das Original ist flauer als nötig, deshalb Helligkeit und Kontrast leicht
-  // angehoben.
-  "IMG_9905.jpeg": {
-    out: "hero-bg.webp",
-    width: 2200,
-    extract: { left: 0, top: 1121, width: 5747, height: 3234 },
-    brightness: 1.16,
-    contrast: [1.04, -6],
-  },
+  // Hero-Hintergrund: die fertig bearbeitete Aufnahme des Kunden, 1:1 und
+  // ungeschnitten. Der Hero passt sie ein, statt sie zu beschneiden — deshalb
+  // hier kein extract und keine Korrektur.
+  "Hero_9905.jpg": { out: "hero-bg.webp", width: 2400 },
   "design-ohne-titel-8.png": { out: "portrait-buero.webp", width: 1400 },
   "design-ohne-titel-7.png": { out: "portrait-2.webp", width: 1200 },
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },

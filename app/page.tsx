@@ -48,24 +48,26 @@ export default function Home() {
           liegt der Text über einem vertikalen Verlauf, weil links kein
           Platz für eine eigene Textspalte bleibt.
 
-          Die Höhe folgt ab lg dem Seitenverhältnis des Ausschnitts (16:9)
-          statt der Bildschirmhöhe. Eine feste Höhe hiesse, dass object-cover
-          die Fläche füllt, indem es abschneidet — je nach Fensterformat traf
-          das Laptop, Ärmel oder Kopf. So ist der Ausschnitt immer vollständig
-          zu sehen; auf sehr flachen Fenstern reicht der Hero dafür etwas über
-          die Bildschirmkante hinaus. */}
-      <section className="relative isolate flex w-full items-start overflow-hidden bg-ink text-fg max-lg:min-h-[calc(100svh-4rem)] lg:aspect-[16/9]">
-        {/* object-position: auf Hochformat-Fenstern schneidet 16:9 so viel weg,
-            dass die Person aus dem Bild fällt — dort auf sie ausrichten, ab sm
-            liegt das Motiv ohnehin rechts im Bild. */}
-        <Image
-          src="/img/hero-bg.webp"
-          alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
-          fill
-          priority
-          sizes="100vw"
-          className="-z-20 object-cover object-[80%_center] sm:object-center"
-        />
+          Die Sektion ist ab lg genau so hoch wie der Bildschirm unter dem
+          Header, damit das Motiv ohne Scrollen vollständig zu sehen ist. */}
+      <section className="relative isolate flex w-full items-start overflow-hidden bg-ink text-fg max-lg:min-h-[calc(100svh-4rem)] lg:h-[calc(100svh-4rem)]">
+        {/* Das Foto sitzt rechtsbündig in seinem eigenen Seitenverhältnis (3:2)
+            und so hoch wie die Sektion — dadurch ist es ohne Scrollen komplett
+            zu sehen, ohne dass irgendetwas beschnitten wird. Links läuft es
+            über eine Maske weich in die dunkle Fläche aus, sonst stünde seine
+            Kante als harte Linie im Bild. Unter lg füllt es die ganze Fläche,
+            weil ein eingepasstes Querformat auf einem Hochformat-Display nur
+            ein schmaler Streifen wäre. */}
+        <div className="absolute inset-0 -z-20 lg:inset-x-auto lg:right-0 lg:aspect-[3/2] lg:max-w-full lg:[mask-image:linear-gradient(to_right,transparent_0%,#000_20%)]">
+          <Image
+            src="/img/hero-bg.webp"
+            alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[80%_center] lg:object-center"
+          />
+        </div>
         {/* Vertikal: trägt den Text auf schmalen Fenstern und setzt das Foto
             unter dem dunklen Header ab. */}
         <div
