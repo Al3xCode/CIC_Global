@@ -48,13 +48,13 @@ export default function Home() {
           liegt der Text über einem vertikalen Verlauf, weil links kein
           Platz für eine eigene Textspalte bleibt.
 
-          Die Höhe folgt ab lg dem Seitenverhältnis des Ausschnitts (1.56) statt
-          der Bildschirmhöhe. Sonst füllt object-cover ein hohes Fenster, indem
-          es links und rechts abschneidet — dabei fielen Laptop und Buch aus
-          dem Bild. Die Deckelung auf die Bildschirmhöhe greift umgekehrt bei
-          flachen Fenstern: dort wird oben und unten etwas Wand und Tischkante
-          beschnitten, seitlich aber nie. */}
-      <section className="relative isolate flex w-full items-start overflow-hidden bg-ink text-fg max-lg:min-h-[calc(100svh-4rem)] lg:aspect-[1.56] lg:max-h-[calc(100svh-4rem)]">
+          Die Höhe folgt ab lg dem Seitenverhältnis des Ausschnitts (16:9)
+          statt der Bildschirmhöhe. Eine feste Höhe hiesse, dass object-cover
+          die Fläche füllt, indem es abschneidet — je nach Fensterformat traf
+          das Laptop, Ärmel oder Kopf. So ist der Ausschnitt immer vollständig
+          zu sehen; auf sehr flachen Fenstern reicht der Hero dafür etwas über
+          die Bildschirmkante hinaus. */}
+      <section className="relative isolate flex w-full items-start overflow-hidden bg-ink text-fg max-lg:min-h-[calc(100svh-4rem)] lg:aspect-[16/9]">
         {/* object-position: auf Hochformat-Fenstern schneidet 16:9 so viel weg,
             dass die Person aus dem Bild fällt — dort auf sie ausrichten, ab sm
             liegt das Motiv ohnehin rechts im Bild. */}
@@ -64,7 +64,7 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-[76%_center] sm:object-[center_40%]"
+          className="-z-20 object-cover object-[80%_center] sm:object-center"
         />
         {/* Vertikal: trägt den Text auf schmalen Fenstern und setzt das Foto
             unter dem dunklen Header ab. */}
