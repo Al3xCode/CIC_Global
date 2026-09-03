@@ -65,7 +65,7 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[80%_center] lg:object-center"
+            className="object-cover object-[50%_center] lg:object-center"
           />
         </div>
         {/* Vertikal: trägt den Text auf schmalen Fenstern und setzt das Foto
@@ -75,7 +75,7 @@ export default function Home() {
           className="absolute inset-0 -z-10 sm:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(23,20,15,0.93) 0%, rgba(23,20,15,0.84) 45%, rgba(23,20,15,0.6) 100%)",
+              "linear-gradient(to bottom, rgba(23,20,15,0.94) 0%, rgba(23,20,15,0.86) 32%, rgba(23,20,15,0.6) 62%, rgba(23,20,15,0.32) 100%)",
           }}
         />
         {/* Setzt das Foto weich unter dem dunklen Header ab. */}
@@ -84,14 +84,16 @@ export default function Home() {
           className="absolute inset-x-0 top-0 -z-10 hidden h-28 sm:block"
           style={{ background: "linear-gradient(to bottom, rgba(23,20,15,0.7), rgba(23,20,15,0))" }}
         />
-        {/* Seitlich: ab sm übernimmt der Verlauf von links, damit die rechte
-            Bildhälfte offen bleibt. */}
+        {/* Ab sm liegt der Schwerpunkt der Abdunklung in der oberen linken
+            Ecke, wo der Text steht. Nach unten und rechts läuft sie schneller
+            aus als ein gleichmäßiger Verlauf von links — so bleibt möglichst
+            viel von Tisch, Laptop und Buch zu sehen. */}
         <div
           aria-hidden
           className="absolute inset-0 -z-10 hidden sm:block"
           style={{
             background:
-              "linear-gradient(100deg, rgba(23,20,15,0.92) 0%, rgba(23,20,15,0.8) 26%, rgba(23,20,15,0.45) 48%, rgba(23,20,15,0.1) 72%, rgba(23,20,15,0) 88%)",
+              "radial-gradient(135% 125% at 0% 0%, rgba(23,20,15,0.95) 0%, rgba(23,20,15,0.89) 20%, rgba(23,20,15,0.66) 38%, rgba(23,20,15,0.34) 55%, rgba(23,20,15,0.1) 72%, rgba(23,20,15,0) 86%)",
           }}
         />
 
