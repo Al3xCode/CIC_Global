@@ -17,8 +17,9 @@ const DIR = "public/img";
 
 /** Zielbreite = größte gerenderte CSS-Breite x2 für Retina, plus etwas Reserve. */
 const KEEP = {
-  // Hero-Portrait, Querformat 3:2 — steht rechts neben der Hero-Schrift.
-  "hero-portrait-src.png": { out: "portrait-hero.webp", width: 1400 },
+  // Hero-Hintergrund, 16:9 — läuft vollflächig hinter Text und Verlauf.
+  // Motiv sitzt rechts, links bleibt Fläche für die Schrift.
+  "hero-bg-src.png": { out: "hero-bg.webp", width: 1672 },
   "design-ohne-titel-8.png": { out: "portrait-buero.webp", width: 1400 },
   "design-ohne-titel-7.png": { out: "portrait-2.webp", width: 1200 },
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },

@@ -48,13 +48,16 @@ export default function Home() {
           liegt der Text über einem vertikalen Verlauf, weil links kein
           Platz für eine eigene Textspalte bleibt. */}
       <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-start overflow-hidden bg-ink text-fg">
+        {/* object-position: auf Hochformat-Fenstern schneidet 16:9 so viel weg,
+            dass die Person aus dem Bild fällt — dort auf sie ausrichten, ab sm
+            liegt das Motiv ohnehin rechts im Bild. */}
         <Image
-          src="/img/portrait-hero.webp"
+          src="/img/hero-bg.webp"
           alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-[62%_center]"
+          className="-z-20 object-cover object-[72%_center] sm:object-center"
         />
         {/* Vertikal: trägt den Text auf schmalen Fenstern und setzt das Foto
             unter dem dunklen Header ab. */}
@@ -79,11 +82,11 @@ export default function Home() {
           className="absolute inset-0 -z-10 hidden sm:block"
           style={{
             background:
-              "linear-gradient(100deg, rgba(23,20,15,0.94) 0%, rgba(23,20,15,0.86) 28%, rgba(23,20,15,0.5) 52%, rgba(23,20,15,0.12) 76%, rgba(23,20,15,0) 92%)",
+              "linear-gradient(100deg, rgba(23,20,15,0.92) 0%, rgba(23,20,15,0.8) 26%, rgba(23,20,15,0.45) 48%, rgba(23,20,15,0.1) 72%, rgba(23,20,15,0) 88%)",
           }}
         />
 
-        <div className="relative mx-auto w-full max-w-6xl px-5 pb-20 pt-14 sm:px-8 lg:pb-24 lg:pt-20">
+        <div className="relative mx-auto w-full max-w-[92rem] px-5 pb-20 pt-14 sm:px-8 lg:pb-24 lg:pl-14 lg:pt-20">
           <div className="max-w-xl lg:max-w-2xl">
             <p className="eyebrow flex items-center gap-2 text-fg-muted">
               <span aria-hidden className="h-px w-6 bg-gold" />
