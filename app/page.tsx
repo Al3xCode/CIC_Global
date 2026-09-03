@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Counter } from "@/components/Counter";
 import { FAQ } from "@/components/FAQ";
-import { HeroLines } from "@/components/HeroLines";
 import { Timeline } from "@/components/Timeline";
 import { faqJsonLd } from "@/lib/seo";
 import { articles, faqs, formatDate, partners, services, site } from "@/lib/site";
@@ -43,35 +42,63 @@ export default function Home() {
 
   return (
     <>
-      {/* ---------- Hero ---------- */}
-      <section className="relative flex items-center overflow-hidden border-b border-ink/8 lg:min-h-[calc(100svh-4rem)]">
-        {/* Sehr leise Vignette — keine Fläche, nur Tiefe hinter dem Text */}
+      {/* ---------- Hero ----------
+          Vollflächiges Foto statt Bild-neben-Text: der Verlauf von links
+          trägt den Text, ohne das Motiv zuzudecken. Auf schmalen Fenstern
+          liegt der Text über einem vertikalen Verlauf, weil links kein
+          Platz für eine eigene Textspalte bleibt. */}
+      <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-start overflow-hidden bg-ink text-fg">
+        <Image
+          src="/img/portrait-hero.webp"
+          alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover object-[62%_center]"
+        />
+        {/* Vertikal: trägt den Text auf schmalen Fenstern und setzt das Foto
+            unter dem dunklen Header ab. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0"
+          className="absolute inset-0 -z-10 sm:hidden"
           style={{
             background:
-              "radial-gradient(60rem 30rem at 8% 0%, rgba(23,20,15,0.07), transparent 60%)",
+              "linear-gradient(to bottom, rgba(23,20,15,0.93) 0%, rgba(23,20,15,0.84) 45%, rgba(23,20,15,0.6) 100%)",
           }}
         />
-        <HeroLines />
+        {/* Setzt das Foto weich unter dem dunklen Header ab. */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 -z-10 hidden h-28 sm:block"
+          style={{ background: "linear-gradient(to bottom, rgba(23,20,15,0.7), rgba(23,20,15,0))" }}
+        />
+        {/* Seitlich: ab sm übernimmt der Verlauf von links, damit die rechte
+            Bildhälfte offen bleibt. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 hidden sm:block"
+          style={{
+            background:
+              "linear-gradient(100deg, rgba(23,20,15,0.94) 0%, rgba(23,20,15,0.86) 28%, rgba(23,20,15,0.5) 52%, rgba(23,20,15,0.12) 76%, rgba(23,20,15,0) 92%)",
+          }}
+        />
 
-        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.5fr] lg:gap-14 lg:py-20">
-          <div className="min-w-0">
-            <p className="eyebrow flex items-center gap-2">
+        <div className="relative mx-auto w-full max-w-6xl px-5 pb-20 pt-14 sm:px-8 lg:pb-24 lg:pt-20">
+          <div className="max-w-xl lg:max-w-2xl">
+            <p className="eyebrow flex items-center gap-2 text-fg-muted">
               <span aria-hidden className="h-px w-6 bg-gold" />
               Finanzberatung · {site.city}
             </p>
-            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[3.5rem]">
+            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[3.75rem]">
               Finanzielle Sicherheit beginnt mit der{" "}
               <em className="text-gold not-italic">richtigen</em> Beratung.
             </h1>
-            <p className="mt-7 max-w-xl text-lg text-ink-fg-muted">
+            <p className="mt-7 max-w-lg text-lg text-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
               Plan, der heute wirkt und in dreißig Jahren noch trägt.
             </p>
 
-            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/kontakt"
                 className="btn-primary inline-flex min-h-14 items-center whitespace-nowrap px-8 text-base font-medium"
@@ -80,7 +107,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/leistungen"
-                className="group inline-flex min-h-12 items-center gap-2 whitespace-nowrap text-sm text-ink-fg-muted transition-colors hover:text-ink-fg"
+                className="group inline-flex min-h-14 items-center gap-2 whitespace-nowrap border border-white/35 px-7 text-sm text-fg transition-colors hover:border-gold hover:text-gold"
               >
                 Leistungen ansehen
                 <ArrowRight
@@ -90,42 +117,7 @@ export default function Home() {
                 />
               </Link>
             </div>
-
           </div>
-
-          {/* Das Bild wächst nach rechts über den Container hinaus in den sonst
-              leeren Außenrand — die linke Kante bleibt dabei an der Spaltengrenze
-              stehen. Der Versatz ist auf den tatsächlich vorhandenen Außenrand
-              gedeckelt (min), damit auf schmalen Fenstern nie horizontal
-              gescrollt werden muss; unter lg ist --bleed nicht gesetzt und der
-              Wert damit 0. */}
-          <figure
-            className="m-0 lg:[--bleed:6rem]"
-            style={{ marginRight: "calc(-1 * min(var(--bleed, 0px), max(0px, (100vw - 72rem) / 2)))" }}
-          >
-            <div className="relative">
-              {/* Versetzter Gold-Rahmen hinter dem Bild — gibt ihm Gewicht,
-                  ohne eine Fläche zu füllen. Folgt demselben Seitenverhältnis
-                  wie das Bild, damit der Versatz überall gleich breit bleibt. */}
-              <div
-                aria-hidden
-                className="absolute -bottom-4 -right-4 hidden aspect-[3/2] w-full border border-gold/50 sm:block"
-              />
-              <div className="relative aspect-[3/2] w-full">
-                <Image
-                  src="/img/portrait-hero.webp"
-                  alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-cover object-center"
-                />
-              </div>
-            </div>
-            <figcaption className="mt-4 font-mono sm:mt-8 text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
-              {site.founder}
-            </figcaption>
-          </figure>
         </div>
       </section>
 
