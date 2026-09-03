@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden border-b border-ink/8">
+      <section className="relative overflow-hidden border-b border-ink/8 lg:min-h-[78vh]">
         {/* Sehr leise Vignette — keine Fläche, nur Tiefe hinter dem Text */}
         <div
           aria-hidden
@@ -56,18 +56,15 @@ export default function Home() {
         />
         <HeroLines />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:py-24">
-          {/* min-w-0: sonst zieht die (durch &nbsp; unumbrechbare) Überschrift
-              die erste Spalte über ihren fr-Anteil hinaus breit und drückt das
-              Bild klein. */}
-          <div className="min-w-0">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.45fr] lg:gap-14 lg:py-28">
+          <div>
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden className="h-px w-6 bg-gold" />
               Finanzberatung · {site.city}
             </p>
-            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[3.375rem]">
-              Finanzielle Sicherheit beginnt mit der{" "}
-              <em className="text-gold not-italic">richtigen</em> Beratung.
+            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[4rem]">
+              Finanzielle&nbsp;Sicherheit beginnt mit der{" "}
+              <em className="text-gold not-italic">richtigen</em>&nbsp;Beratung.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-ink-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
@@ -96,31 +93,36 @@ export default function Home() {
 
           </div>
 
-          <figure className="m-0 mt-4 lg:mt-0">
+          {/* Das Bild wächst nach rechts über den Container hinaus in den sonst
+              leeren Außenrand — die linke Kante bleibt dabei an der Spaltengrenze
+              stehen. Der Versatz ist auf den tatsächlich vorhandenen Außenrand
+              gedeckelt (min), damit auf schmalen Fenstern nie horizontal
+              gescrollt werden muss; unter lg ist --bleed nicht gesetzt und der
+              Wert damit 0. */}
+          <figure
+            className="m-0 lg:[--bleed:6rem]"
+            style={{ marginRight: "calc(-1 * min(var(--bleed, 0px), max(0px, (100vw - 72rem) / 2)))" }}
+          >
             <div className="relative">
               {/* Versetzter Gold-Rahmen hinter dem Bild — gibt ihm Gewicht,
                   ohne eine Fläche zu füllen. Folgt demselben Seitenverhältnis
                   wie das Bild, damit der Versatz überall gleich breit bleibt. */}
               <div
                 aria-hidden
-                className="absolute -bottom-4 -right-4 hidden aspect-[4/3] w-full border border-gold/50 sm:block sm:aspect-[16/9] lg:aspect-[4/3]"
+                className="absolute -bottom-4 -right-4 hidden aspect-[3/2] w-full border border-gold/50 sm:block"
               />
-              {/* 16:9 nur dort, wo das Bild über die volle Breite läuft. In der
-                  schmaleren rechten Spalte wäre es ein flacher Streifen —
-                  deshalb ab lg wieder 4:3, das füllt die Spaltenhöhe neben
-                  dem Text. */}
-              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[4/3]">
+              <div className="relative aspect-[3/2] w-full">
                 <Image
-                  src="/img/portrait-hero-wide.webp"
+                  src="/img/portrait-hero.webp"
                   alt={`${site.founder}, Gründer von ${site.name}, am Schreibtisch`}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover object-center"
                 />
               </div>
             </div>
-            <figcaption className="mt-4 font-mono text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
+            <figcaption className="mt-4 font-mono sm:mt-8 text-2xs uppercase tracking-[0.18em] text-ink-fg-muted">
               {site.founder}
             </figcaption>
           </figure>

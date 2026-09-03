@@ -6,7 +6,7 @@
 
 export const site = {
   name: "CIC-Global",
-  founder: "Konstantinos Kougas",
+  founder: "Konstantinos Kougkas",
   url: "https://cic-global.de",
   street: "Johannes-Rau-Allee 3",
   postalCode: "45889",

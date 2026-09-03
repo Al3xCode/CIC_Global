@@ -11,6 +11,15 @@ export const metadata = pageMeta({
   path: "/ueber-uns",
 });
 
+// TODO(Kunde): echte Eckdaten liefern (Gründungsjahr, Werdegang davor,
+// 2-4 Meilensteine), bevor dieser Abschnitt live geht. Aktuell Platzhalter.
+const milestones = [
+  { year: "TODO", label: "Platzhalter — z. B. Gründung" },
+  { year: "TODO", label: "Platzhalter — Meilenstein" },
+  { year: "TODO", label: "Platzhalter — Meilenstein" },
+  { year: "Heute", label: "CIC-Global in Gelsenkirchen" },
+];
+
 export default function UeberUns() {
   return (
     <>
@@ -90,6 +99,33 @@ export default function UeberUns() {
                 </dd>
               </div>
             </dl>
+
+            {/*
+              Lebenslinie — bewusst NICHT die animierte Timeline-Komponente
+              der Leistungsseite (die kodiert "wann wirkt was", das hier ist
+              eine andere Aussage). Ruhige, statische Mini-Achse im gleichen
+              Mono/Gold-Vokabular wie die horizon-Labels dort.
+
+              WICHTIG: Platzhalter-Daten. Nicht live schalten, bevor der
+              Kunde echte Eckdaten (Gründungsjahr, Werdegang, Meilensteine)
+              geliefert hat — sonst stehen erfundene Behauptungen über eine
+              echte Person auf der Seite.
+            */}
+            <div className="mt-10 border-t border-white/15 pt-8">
+              <p className="font-mono text-2xs uppercase tracking-[0.18em] text-fg-muted">
+                Unser Weg
+              </p>
+              <ol className="mt-5 flex flex-wrap gap-x-10 gap-y-6">
+                {milestones.map((m, i) => (
+                  <li key={i}>
+                    <p className="font-mono text-2xs uppercase tracking-[0.14em] text-gold">
+                      {m.year}
+                    </p>
+                    <p className="mt-1.5 max-w-[11rem] text-sm text-fg-muted">{m.label}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </section>

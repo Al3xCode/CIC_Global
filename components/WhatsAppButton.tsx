@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
  * sich ins Gold/Beige einzufügen.
  */
 const digits = site.phoneHref.replace(/\D/g, "");
-const prefill = encodeURIComponent(`Hallo ${site.name}, ich habe eine Frage.`);
+const prefill = encodeURIComponent(`Hallo Konstantinos, ich habe eine Frage.`);
 
 export function WhatsAppButton() {
   return (

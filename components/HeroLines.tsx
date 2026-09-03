@@ -105,12 +105,15 @@ export function HeroLines() {
         </div>
       )}
 
+      {/* Unsichtbar, bis jemand ihn sucht: WCAG 2.2.2 verlangt für eine dauerhaft
+          laufende Animation einen Aus-Schalter, aber er soll den Hero nicht stören.
+          Hover und Tastaturfokus holen ihn zurück. */}
       <button
         type="button"
         onClick={() => setVisible((v) => !v)}
         aria-pressed={visible}
         aria-label={visible ? "Hintergrund-Animation ausblenden" : "Hintergrund-Animation einblenden"}
-        className="absolute bottom-5 left-5 flex h-9 w-9 items-center justify-center border border-ink/12 text-ink-fg-muted/70 backdrop-blur-sm transition-colors hover:border-gold/50 hover:text-gold"
+        className="absolute bottom-5 left-5 flex h-9 w-9 items-center justify-center border border-ink/12 text-ink-fg-muted/70 opacity-0 backdrop-blur-sm transition-all hover:border-gold/50 hover:text-gold hover:opacity-100 focus-visible:opacity-100"
       >
         {visible ? (
           <Pause aria-hidden size={14} strokeWidth={1.5} />

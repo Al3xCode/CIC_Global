@@ -1,6 +1,6 @@
 # CIC-Global — Relaunch-Entwurf
 
-Neubau der Website von CIC-Global (Konstantinos Kougas, Gelsenkirchen) als Ersatz
+Neubau der Website von CIC-Global (Konstantinos Kougkas, Gelsenkirchen) als Ersatz
 für die bestehende Hostinger-Builder-Seite.
 
 **Live:** https://cic-global.vercel.app
