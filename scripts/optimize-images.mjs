@@ -17,9 +17,19 @@ const DIR = "public/img";
 
 /** Zielbreite = größte gerenderte CSS-Breite x2 für Retina, plus etwas Reserve. */
 const KEEP = {
-  // Hero-Hintergrund, 16:9 — läuft vollflächig hinter Text und Verlauf.
-  // Motiv sitzt rechts, links bleibt Fläche für die Schrift.
-  "hero-bg-src.png": { out: "hero-bg.webp", width: 1672 },
+  // Hero-Hintergrund. Aus der Originalaufnahme (7008x4672) geschnitten:
+  // rechts fällt die leere Wandfläche weg, oben die Wand über dem Kopf. Übrig
+  // bleibt ein Ausschnitt im Verhältnis 1.56 — links freie Fläche für Schrift
+  // und Verlauf, rechts die Person, Laptop, Stift und Buch vollständig drin.
+  // Das Original ist flauer als nötig, deshalb Helligkeit und Kontrast leicht
+  // angehoben.
+  "IMG_9905.jpeg": {
+    out: "hero-bg.webp",
+    width: 2200,
+    extract: { left: 0, top: 981, width: 5747, height: 3684 },
+    brightness: 1.16,
+    contrast: [1.04, -6],
+  },
   "design-ohne-titel-8.png": { out: "portrait-buero.webp", width: 1400 },
   "design-ohne-titel-7.png": { out: "portrait-2.webp", width: 1200 },
   "design-ohne-titel-9.png": { out: "portrait-3.webp", width: 1400 },
@@ -34,11 +44,15 @@ const kb = (n) => Math.round(n / 1024);
 let before = 0;
 for (const f of fs.readdirSync(DIR)) before += fs.statSync(path.join(DIR, f)).size;
 
-for (const [src, { out, width }] of Object.entries(KEEP)) {
+for (const [src, { out, width, extract, brightness, contrast }] of Object.entries(KEEP)) {
   const from = path.join(DIR, src);
   if (!fs.existsSync(from)) continue;
   const to = path.join(DIR, out);
-  await sharp(from)
+  let img = sharp(from);
+  if (extract) img = img.extract(extract);
+  if (brightness) img = img.modulate({ brightness });
+  if (contrast) img = img.linear(contrast[0], contrast[1]);
+  await img
     .resize({ width, withoutEnlargement: true })
     .webp({ quality: 82, effort: 6 })
     .toFile(to);
