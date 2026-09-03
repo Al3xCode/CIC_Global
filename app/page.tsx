@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden border-b border-ink/8 lg:min-h-[78vh]">
+      <section className="relative flex items-center overflow-hidden border-b border-ink/8 lg:min-h-[calc(100svh-4rem)]">
         {/* Sehr leise Vignette — keine Fläche, nur Tiefe hinter dem Text */}
         <div
           aria-hidden
@@ -56,31 +56,31 @@ export default function Home() {
         />
         <HeroLines />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.45fr] lg:gap-14 lg:py-28">
-          <div>
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.5fr] lg:gap-14 lg:py-20">
+          <div className="min-w-0">
             <p className="eyebrow flex items-center gap-2">
               <span aria-hidden className="h-px w-6 bg-gold" />
               Finanzberatung · {site.city}
             </p>
-            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[4rem]">
-              Finanzielle&nbsp;Sicherheit beginnt mit der{" "}
-              <em className="text-gold not-italic">richtigen</em>&nbsp;Beratung.
+            <h1 className="mt-6 text-[2.25rem] font-medium leading-[1.05] sm:text-3xl lg:text-[3.5rem]">
+              Finanzielle Sicherheit beginnt mit der{" "}
+              <em className="text-gold not-italic">richtigen</em> Beratung.
             </h1>
             <p className="mt-7 max-w-xl text-lg text-ink-fg-muted">
               Jede finanzielle Situation ist anders. Wir sehen uns Ihre an — und bauen daraus einen
               Plan, der heute wirkt und in dreißig Jahren noch trägt.
             </p>
 
-            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href="/kontakt"
-                className="btn-primary inline-flex min-h-14 items-center px-8 text-base font-medium"
+                className="btn-primary inline-flex min-h-14 items-center whitespace-nowrap px-8 text-base font-medium"
               >
                 Kostenloses Erstgespräch
               </Link>
               <Link
                 href="/leistungen"
-                className="group inline-flex min-h-12 items-center gap-2 text-sm text-ink-fg-muted transition-colors hover:text-ink-fg"
+                className="group inline-flex min-h-12 items-center gap-2 whitespace-nowrap text-sm text-ink-fg-muted transition-colors hover:text-ink-fg"
               >
                 Leistungen ansehen
                 <ArrowRight
